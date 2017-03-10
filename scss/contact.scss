@@ -1,0 +1,42 @@
+.dashboard .contact {
+
+	div#social { 
+		p {
+			line-height:40px; 
+		}
+	}
+
+	.secondaryContainer .item {
+		border-radius: 0; 
+	}
+
+	.sectionTitle{
+		text-align:center;
+
+	}
+
+	mz-template:last-child .item {
+		border-bottom-left-radius: $container-round-corner; 
+		border-bottom-right-radius: $container-round-corner;
+	}
+
+	.item {
+		&.activated:not(.disableActivated) {
+			background-color:$instrument-activated-color; 
+		}
+
+		border: 0; 
+		p {
+			//color: $contact-font-color; 
+		}
+		h2 {
+			color: $contact-title-color;
+			font-size: 16px;
+		}
+	}
+
+	.social a.item {
+		display: flex;
+    align-items: center;
+	}
+}

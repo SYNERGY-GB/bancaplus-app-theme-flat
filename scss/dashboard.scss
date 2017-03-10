@@ -1,0 +1,136 @@
+.dashboard .dashboard.pane {
+	background: url($dashboard-background) no-repeat center;
+	background-size: 102%; 
+	margin-top:0%;
+	background-position: top;
+}
+
+/* small screen width */
+@media only screen and (max-width: 350px) {
+	.dashboard .dashboard {
+		#footerMenu h4 {
+			font-size: 3.0vw;
+		}
+	}
+}
+
+/* big screen width */
+@media only screen and (min-width: 351px) {
+	.dashboard .dashboard {
+		#footerMenu h4 {
+			font-size: 3.5vw;
+		}
+	}
+}
+
+/* small screen height */
+@media only screen and (max-height: 500px) {
+	.dashboard .dashboard {
+		ion-list .list {
+    	width: 72vw;
+  	}
+		.item {
+			min-height: 60px;
+			display: flex;
+    	align-items: center;
+			padding-bottom: 0;
+    	padding-top: 0;
+    	h2 {
+				padding-top: 0; 
+				margin: 0;
+				font-size: 15px;
+			}
+			p { display: none; }
+		}
+	}
+}
+
+/* big screen height */
+@media only screen and (min-height: 501px) {
+	.dashboard .dashboard {
+		ion-list .list {
+			width: $dashboard-item-width;
+		}
+		.item {
+			padding-bottom: 8px;
+    		padding-top:4px;
+    	h2 {
+				padding-top:5px; 
+			}
+		}
+	}
+}
+
+.dashboard .dashboard {
+
+	.item {
+		border:none; 
+		background-color:transparent; 
+		p {
+			font-size:$dashboard-item-paragraph-size;
+			color: $dashboard-item-font-color;
+			padding:0; 
+		}
+		h2 {
+			color: $dashboard-item-title-color;
+			font-size: 16px; 
+		}
+	}
+
+	hr {
+		border-color: #B3B3B3; 
+	}
+
+	.logo {
+		padding: $dashboard-logo-padding;
+		.full-image {
+			padding: 50px 15px 0 15px;
+		}
+	}
+
+	.button-icon{
+		font-size:11px;
+
+	}
+
+.dashboard-menu{
+	position:absolute;
+	top:50%;
+	width:100%;
+	height:50%;
+
+	.dashboard-box{
+		width: 50%;
+		height:50%;
+		float:left;
+		border:1px solid #DAD7D7;
+		background:white;
+		//background: rgba(255, 255, 255, 0.5); 
+		position:relative;
+
+	    .dashboard-img{
+			max-width:30%;
+			max-height:30%;
+			margin-left:43%;
+			margin-top:10%;
+ 		}
+ 		 h2{
+		 	font-size:90%;
+		 	margin-top:10%;
+			color:$main-color;
+			font-weight:bold;
+			text-align:center;
+		}
+		  p{
+		  	width:100%;
+		 	font-size:80%;
+			color:$main-color;
+			font-weight:bold;
+			text-align:center;
+
+ 		}
+
+	}
+}
+
+}

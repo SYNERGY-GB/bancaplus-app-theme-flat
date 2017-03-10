@@ -1,0 +1,46 @@
+.appMenu .approvals, .appMenu .approvalsDetailApprovers {
+	.mainContainer {
+		padding: 5px; 
+		.mainContainer {
+			margin-top:0; 
+			padding: 12px 8px; 
+			.sectionTitle {
+				h4 {
+					color: white; 
+					font-size: 11px; 
+				}
+			}
+			.row {
+				#link {
+					text-decoration: underline; 
+					color: $icon-color; 
+				}
+				padding: 10px 7px; 
+				.col {
+					padding: 3px; 
+				}
+			}
+		}
+	}
+
+	.icon {
+    	font-size: 20px;
+	}
+}
+
+.appMenu .approvalsDetailApprovers {
+	.mainContainer .mainContainer .sectionTitle h4 {
+		font-size: 13px; 
+	}
+
+	.row {
+		#approver {
+			h4  {
+				color: $icon-color; 
+			}
+			+ i {
+				font-size: 26px; 
+			}
+		}
+	}
+}

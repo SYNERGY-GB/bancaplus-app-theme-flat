@@ -1,0 +1,68 @@
+2<ion-view cache-view="false" mz-screen>
+    <ion-nav-title>
+        {{title}}
+    </ion-nav-title>
+    <ion-content>
+        <img ng-src="{{params.bannerURL}}" on-error-src="{{params.banner}}" 
+             id="banner"/>
+        <div class="mainContainer">
+            <div style="margin-left: 10%;" class="sectionTitle item item-select" id="selectRound">
+                <select ng-options="instrument as (instrument.name | limitTo: 22) + ' ' + (instrument.category == 'claims' ? '' : instrument.maskedAccountNumber | limitTo: -7)
+                                    for instrument in searchableInstruments"
+                        ng-change="instrumentChanged(instrumentSelected)" ng-model="instrumentSelected"
+                        class="truncate">
+                </select>
+            </div>
+            <div class="secondaryContainer">
+                <mz-template bind-to="instrumentDetail.instrument"
+                             template-type="'instrumentInfo.html'"
+                             screen-params="params"
+                             params="extraParams">
+                </mz-template>
+                <hr ng-if="hasImportantDates()">
+                <div class="row" ng-if="hasImportantDates()" ng-click="goToCalendar()">
+                    <div class="col col-10 col-center" id="balanceLabel">
+                        <i class="icon ion-calendar"></i>
+                    </div>
+                    <div class="col col-center" id="balanceLabel">
+                        <h4> {{'instrument_credit_card_dates' | translate }} </h4>
+                    </div>
+                    <div class="col col-10 col-center" id="balanceLabel">
+                        <i class="icon ion-forward"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center padding" ng-if="instrumentDetail.instrument.payer">
+                <button type="button" ng-click="goTo('goToTransfer')" class="app-input button">
+                    <p>{{'transfer' | translate}} </p>
+                </button>
+            </div>
+
+            <div class="text-center padding" ng-if="instrumentDetail.instrument.payable && !instrumentDetail.instrument.payer">
+                <button type="button" ng-click="transferAsDestination()" class="button app-input icon-left">
+                    {{'pay' | translate}}
+                </button>
+            </div>
+
+            <div ng-if="instrumentDetail.statement">
+                <div style="margin-left: 10%;" class="sectionTitle item item-select" id="selectRound">
+                    <select ng-model="dateSelected.id" class="truncate"
+                            ng-change="monthChanged(dateSelected.id)"
+                            ng-options="month.id as month.name for month in monthOptions">
+                    </select>
+                </div>
+                <div class="secondaryContainer" ng-if="instrumentDetail.statement.items.length">
+                    <mz-template bind-to="instrumentDetail.statement.items"
+                                 template-type="'monthlyExpenses.html'"
+                                 screen-params="params"
+                                 params="extraParams">
+                    </mz-template>
+                </div>
+                <div class="text-center" ng-if="!instrumentDetail.statement.items.length">
+                    <p class="padding bold italic color2"> {{'no_movements' | translate}}</p>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

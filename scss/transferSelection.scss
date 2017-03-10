@@ -1,0 +1,45 @@
+.appMenu .transferSelection {
+
+	h4 {
+		font-size: 16px;
+	}
+
+	.secondaryContainer, .item {
+		border: 0; 
+	}
+
+	.item-content {
+		white-space: normal;
+	}
+
+	.sectionTitle {
+		.row, .col {
+			padding: 0;
+			font-weight:bold;
+			font-size:$section-title-font-size;
+
+		}
+		.icon {
+			position: static;
+			margin-top: 0px;
+		}
+	}
+
+
+	.addBorder {
+		//border-bottom-right-radius: $container-round-corner; 
+		//border-bottom-left-radius: $container-round-corner; 
+	}
+
+	.item-checkbox .checkbox {
+		padding-right:50px; 
+	}
+
+	.item-icon-left .row, .item-icon-left .col, .item-checkbox .row, .item-checkbox .col {
+		padding: 0;
+	}
+
+	button {
+		margin-bottom:20px; 
+	}
+}

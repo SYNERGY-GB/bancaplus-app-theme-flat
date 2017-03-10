@@ -1,0 +1,110 @@
+<ion-view mz-screen cache-view="false" hide-back-button="true">
+	<ion-nav-title>{{params.title | translate }}</ion-nav-title>
+    <ion-content>
+    	
+    	<div class="padding" id="welcomeMsg">
+	        <b> <p class="text-right">{{'financial_summary_welcome' | translate }}: {{::data.user.title }} 
+	        					  {{::data.user.firstName}} {{::data.user.lastName}} </p> </b>
+	        <p class="text-right">{{'financial_summary_last_connection' | translate}}: {{::data.user.lastSession.displayDate}} </p>
+	        <p class="text-right" ng-if="data.user.lastSessionChannel">
+	        		{{'financial_summary_channel' | translate}}: {{data.user.lastSessionChannel}}  
+	        </p>
+	    </div>
+	    
+		<div class="mainContainer" ng-repeat="section in transformedData" ng-if="section.data && section.data.length>0">
+			<div class="sectionTitle row">
+				<img class="col-10 col-center" ng-src="{{params.sectionIcon}}"/>
+				<h3 class="col col-center"> {{::section.displayName}} </h3>
+			</div>
+			<div class="secondaryContainer">
+
+				<!-- instrument -->
+				<div ng-repeat="instrument in section.data">
+					<div class="row instrument" on-hold="goToInstrumentOptions(instrument, $event, $parent.$index)" 
+						 ng-click="instrument.hasDetail && goToDetail(instrument)" ng-class="{'hasTotal' : params.showTotal}">
+
+						<!-- first column: instrument icon -->
+						<div class="col col-10 text-center col-center" ng-switch="instrument.category">
+							<img ng-src="{{params.cardIcon}}" ng-switch-when="creditCards"/>
+							<img ng-src="{{params.checkingIcon}}" ng-switch-when="checkingAccounts"/>
+							<img ng-src="{{params.savingIcon}}" ng-switch-when="savingAccounts"/>
+							<img ng-src="{{params.creditIcon}}" ng-switch-when="credits"/>
+							<img ng-src="{{params.claimsIcon}}" ng-switch-when="claims"/>
+							<img ng-src="{{params.defaultIcon}}" ng-switch-default />
+						</div>
+
+						<!-- second column -->
+						<p class="instrument col col-33 col-center"> 
+							{{::instrument.name}} 
+							<span  ng-if="!(instrument.category =='claims')">
+								{{::instrument.maskedAccountNumber | limitTo: -7}}
+							</span>
+						</p>
+
+						<!-- third column -->
+						<div class="col col-50 col-center text-right">
+							<p class="amount" ng-if="(instrument.category =='checkingAccounts' || 
+													 						 instrument.category == 'savingAccounts'  || 
+													 						 instrument.category =='creditCards') && 
+ 													 						 amount.currency == defaultCurrency"
+																			 ng-repeat="amount in instrument.available"> 
+								{{::amount.displayAmount}}
+							</p> 
+							<p class="amount" ng-if="!(instrument.category =='checkingAccounts' ||
+													   						 instrument.category == 'savingAccounts' ||
+													   						 instrument.category =='creditCards') && 
+																				 amount.currency == defaultCurrency"
+																				 ng-repeat="amount in instrument.balance"> 
+								{{::amount.displayAmount}}
+							</p> 
+							<p class="text-right" ng-if="instrument.category=='creditCards'" id="status"> 
+								({{'available' | translate}})
+							</p>
+
+							<!-- NUEVO -->
+							<div ng-if="instrument.customDisplayValue.propertyType=='string'"> 
+								<div class="row no-padding">
+									<p class="col col-center text-right amount"> 
+										{{::instrument.customDisplayValue.stringValue}}
+									</p>
+								</div>
+								<div class="row no-padding">
+									<p class="col col-center text-right"> 
+										{{::instrument.customDisplayValue.displayName}}
+									</p>
+								</div>
+							</div>
+							<div ng-if="instrument.customDisplayValue.propertyType=='balance'"> 
+								<div class="row no-padding">
+									<p class="col col-center text-right amount"> 
+										{{::instrument.customDisplayValue.balanceValue[0].displayAmount}}
+									</p>
+								</div>
+								<div class="row no-padding">
+									<p class="col col-center text-right"> 
+										{{::instrument.customDisplayValue.balanceValue[0].displayName}}
+									</p>
+								</div>
+							</div> 
+						</div>
+
+						<!-- fourth column: details arrow icon -->
+						<div class="col col-center text-right text-center">
+							<i class="icon {{params.arrow}}" ng-show="instrument.hasDetail"></i>	
+						</div>
+					</div>
+					<hr ng-if="$index<section.data.length-1"/>	
+				</div>
+			</div>
+				
+				<!-- Accounts total amount -->
+				<div style="margin-left: 10%;width:80%;height:20%;" class="row instrument totalAmount" ng-if="section.total">
+					<div class="col col-90 text-center">
+						<span id="label">{{'total' | translate}}:</span> 
+						<span class="amount"> {{section.total.displayAmount}} </span>
+					</div>
+				</div>
+		</div>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,51 @@
+.appMenu .summary {
+	background-color:white;
+	//background: url($login-background) no-repeat center;
+	//background-size:102% 25%;
+	//background-position:center top;
+
+	#welcomeMsg p {
+		margin-bottom:0; 
+		color: $main-color;
+	}
+
+	.mainContainer {
+
+		padding-left:$financial-main-container-side-padding;
+		padding-right:$financial-main-container-side-padding; 
+	}
+
+	.sectionTitle img {
+		display:none;
+	}
+
+	.instrument{
+		margin-left:5px;
+	}
+
+	.sectionTitle {
+		padding:5px; 
+		h3 {
+			margin:0;
+			text-align:center; 
+			font-weight:bold;
+		}
+	}
+
+	.ion-forward {
+		color: $app-default-button-color;
+	}
+
+	.totalAmount {
+		background-color: $app-default-button-color;
+		font-size: 18px;
+		font-weight:bold;
+		.amount, #label {
+			color: white;
+		}
+		#label {
+			margin-right: 5px;
+		}
+
+	}
+}

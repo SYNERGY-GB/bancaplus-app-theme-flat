@@ -1,0 +1,70 @@
+<ion-view cache-view="false" mz-screen hide-back-button="true">
+    <ion-nav-title>{{params.title | translate }}</ion-nav-title>
+    <ion-nav-buttons side="left">
+       	<button class="button button-icon button-clear ion-chevron-left" ng-click="goBack()">
+      	</button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+    </ion-nav-buttons>
+    <ion-content>
+    	<img ng-src="{{params.progressResource}}" class="full-image padding" />
+    	<div class="mainContainer">
+    		<div class="sectionTitle">
+    			<h3>{{'transfer_result' | translate }}</h3>
+    		</div>
+    		<div class="secondaryContainer">
+                <div id="source">
+                    <p class="subtitle" id="color"> {{'transfer_confirm_source_instrument' | translate}} </p>
+                    <p class="subtitle">
+                        {{::data.sourceInstrument.name}} {{::data.sourceInstrument.maskedAccountNumber | limitTo: -7}}
+                    </p>
+                    <hr id="categoryHr"/>
+                </div>
+                <div ng-repeat="section in data.sections">
+                    <p class="subtitle" id="color">{{::section.displayName}}</p>
+        			<div ng-repeat="transfer in section.data">
+        				<div class="item item-icon-left" id="result">
+	        				<i class="icon"
+	        				  ng-class="{'ion-checkmark-circled successful' : transfer.execution.successful==true,
+	        							 'ion-close-circled rejected' : transfer.execution.successful==false}"></i>
+	    					<p class="subtitle"> 
+                                {{::transfer.displayName}} {{::transfer.maskedAccountNumber | limitTo: -7}} 
+                            </p>
+                            <p class="subtitle" ng-if="transfer.conceptToDisplay"> 
+                                {{::transfer.conceptToDisplay}} 
+                            </p>
+	        				<div class="row" ng-if="transfer.execution.successful==true">
+	        					<p class="col col-50 col-center subtitle"> {{'amount' | translate}} </p>
+	        					<h4 class="col col-50 col-center text-right amount"> 
+                                    <span class="bs">{{transfer.mainCurrency | translate}}</span>
+                                    <span class="bs">{{transfer.currency | translate}}</span> 
+                                    {{transfer.amountToDisplay | balanceFormatter}}  
+                                </h4>
+	        				</div>
+                            <p class="subtitle error" ng-if="transfer.execution.successful==false">
+                                {{transfer.execution.errorText}}
+                            </p>
+	        				<p class="subtitle" ng-if="transfer.execution.successful==true" id="sucessful">
+	        					{{'ref_number' | translate}}: {{transfer.execution.reference}}
+	        				</p>
+                            <dir class="row date" ng-if="transfer.execution.successful==true">
+                                <p class="subtitle col"> 
+                                    {{::transfer.execution.executionTime.displayDate}}
+                                </p>
+                                <i class="icon share ion-android-share-alt col-10" 
+                                   ng-click="share(transfer)"></i>
+                            </dir>
+	        			</div>
+        				<hr ng-if="$index < section.data.length - 1" />
+        			</div>
+                    <hr ng-if="$index < data.sections.length - 1" />
+                </div>
+    		</div>
+    	</div>
+	    <div class="text-center padding">
+		    <button type="button" class="app-input button" ng-click="goBack()">
+		        <p>{{'go_back' | translate}} </p>
+		    </button>
+		</div>
+    </ion-content>
+</ion-view>

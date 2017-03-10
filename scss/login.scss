@@ -1,0 +1,182 @@
+.dashboard .login.pane.startBackground {
+	background: url($login-background) no-repeat center;
+	background-size:102%;
+}
+
+@media only screen and (max-height: 568px) {
+	.dashboard .login{
+
+		img.welcome-image {
+    	padding: 50px 35px 0 35px;
+		}
+
+		h3.sectionTitle {
+		  padding: 10px;
+		  margin-bottom: 10px;
+		}
+
+		.sectionTitle {
+	    font-size: 18px;
+		}
+
+		.button-bar {
+    	padding: 0 0px 10px 30px;
+		}
+
+		.app-input.item-input {
+	    height: 45px;
+	    padding: 0 0 0 16px;
+		}
+
+		.input-box {
+    	top: 0vh;
+    	margin-left: 10px;
+    	margin-right: 10px;
+   	}
+
+   	.row#loginButtons {
+ 			padding-top: 5px;
+    		padding-bottom: 5px;
+ 		}
+  }
+}
+
+@media only screen and (min-height: 569px) {
+	.dashboard .login{
+
+		img.welcome-image {
+    	padding: $login-logo-padding; 
+		}
+
+		h3.sectionTitle {
+		  padding:15px; 
+			margin-bottom: 15px; 
+		}
+
+		.button-bar {
+    	padding: 0 30px 15px 30px; 
+		}
+
+		.app-input.item-input {
+	    height: $input-height;
+	    padding: 0 0 0 16px;
+		}
+
+		.input-box {
+    	top: $login-box-position-top;
+    	margin-left:$login-box-margin;
+ 			margin-right:$login-box-margin;
+   	}
+  }
+}
+
+.dashboard .login {
+	
+	.app-input.item-input {
+		background-color: white; 
+		border-radius: 0;  
+		border: 1px solid $input-border-color; 
+	}
+
+	.button-bar {
+		button {
+			text-overflow: initial;
+			white-space: initial;
+			overflow: initial; 
+			padding: 0 8px; 
+			border-radius: 0px !important;
+			background-color: white;
+			border: 1px solid $app-default-button-color;
+			p {
+				margin-bottom:0;
+				line-height: normal;
+			}
+			&:first-child {
+				border: 1px solid $header-color;
+				border-right:0;
+				p {
+					color: $header-color; 
+				}
+			}
+			&:first-child.selectedLogin {
+				background-color: $header-color;
+			}
+			&:last-child {
+				border-left: 0;
+				p {
+					color: $app-default-button-color; 
+				} 
+			}
+			&.selectedLogin {
+				background-color: $app-default-button-color; 
+				p {
+					color: white; 
+				}
+			}
+		}
+	}
+	
+	.sectionTitle{
+			margin-left:0px;
+			width:100%;
+
+	}
+
+ 	.item-input:first-child {
+ 		margin-bottom: 0px;  
+ 		//border-top-right-radius: $container-round-corner; 
+		//border-top-left-radius: $container-round-corner; 
+ 		border-bottom: 0 !important;
+ 	}
+
+ 	.app-input#password {
+ 		//border-bottom-right-radius: $container-round-corner; 
+		//border-bottom-left-radius: $container-round-corner; 
+ 	}
+
+ 	input[type] {
+ 		font-size:18px; 
+ 	}
+
+ 	.app-input.reset-button {
+ 		background-color: $main-color;
+ 		&.activated {
+ 			background-color: $secondary-color;
+ 		}
+ 	}
+
+ 	.input-box {
+ 		position: relative; 
+ 		padding-bottom: 8px; 
+ 		background-color: $login-box-background; 
+ 		//border: 1px solid $input-border-color;
+ 	}
+
+ 	.row#loginButtons {
+ 		margin-top:20px; 
+ 		button:first-child {
+ 			margin-left:0px; 
+ 		}
+ 		button:last-child {
+ 			margin-right:0px; 
+ 		}
+ 		button {
+ 			padding: 0;
+ 			min-width: 0;
+ 		}
+ 	}
+
+ 	.fix-content-bottom img {
+   	width: 100%;
+    padding-left: 25%;
+    padding-right: 25%;
+  }
+
+  .footer{
+  	width:100%;
+  	height:40%;
+  	background-color:white;
+  	margin-top:110%;
+  }
+
+}

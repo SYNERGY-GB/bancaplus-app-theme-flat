@@ -1,0 +1,61 @@
+.appMenu .transferResult, .appMenu .transferConfirm {
+
+	hr {
+		margin: 5px 0 7px 0;  
+	}
+
+	#source hr {
+		margin-top: 10px; 	
+	}
+
+	.secondaryContainer {
+		padding:10px 12px; 
+	}
+
+	p, .row {
+		padding: 3px 0; 
+	}
+
+	.error {
+		white-space: normal;
+	}
+
+	.row p {
+		padding:0; 
+	}
+
+	.amount span {
+		font-size: 12px;
+	}
+
+	.bs {
+		color: $app-default-font-color;
+	}
+
+	.item.item-icon-left#result {
+	  padding: 5px 0 3px 40px; 
+		padding-right:0; 
+		border:0; 
+		.icon {
+			top: initial;
+			left:0;
+			-ms-flex-align: baseline;
+    	-webkit-align-items: baseline;
+    	-moz-align-items: baseline;
+			align-items: baseline;  
+		}
+	}
+
+	.row.date {
+		margin: 0;
+		.icon.share {
+			position: absolute;
+		    height: initial;
+		    top: initial !important;
+		    left: initial !important;
+		    right: 2px;
+    		bottom: 5px;
+		    align-items: initial;
+		}
+	}
+}

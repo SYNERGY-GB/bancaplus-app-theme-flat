@@ -1,0 +1,869 @@
+// Fonts and title
+
+h2 {
+	font-size: $h2-default-size; 
+}
+
+h6, h5, h4, h3, h2, h1, p {
+	color: $app-default-font-color;
+	font-family: $app-default-font-family; 
+
+  &.bold {
+   	font-weight: bold;
+  }
+
+	&.italic {
+		font-style: italic;
+	}
+
+	&.color1 {
+			color: $main-color;
+	}
+
+	&.color2 {
+			color: $secondary-color;
+	}
+}
+
+p {
+	&.subtitle {
+		padding: 3px 10px; 
+		margin-bottom: 0; 
+		font-size: 16px; 
+		&#sucessful {
+			color: $secondary-color; 
+		}
+	}
+	&#color {
+		color: $header-color; 
+		font-weight: bold; 
+	}
+}
+
+h3.sectionTitle {
+	margin-bottom:0; 
+
+}
+
+.text-justify {
+	text-align: justify;
+}
+
+.link {
+	text-decoration: underline; 
+	color: blue; 
+}
+
+.sectionTitle {
+	background-color: $section-title-background-color; 
+	font-size:$section-title-font-size; 
+	color: $section-title-font-color;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align:center;
+	padding: 10px;
+	margin-left: 10%;
+	width:80%;
+	&.item { 
+		border:0; 
+		background-color: $section-title-background-color; 
+		i {
+			color:$app-default-background-color; 
+			font-size: $section-title-icon-size;
+		}
+	}
+	h3 {
+		margin-bottom:0; 
+		font-size:$section-title-font-size; 
+		color: $section-title-font-color;
+		text-transform: uppercase;
+		font-weight:bold;
+	}
+}
+
+
+// Headers
+.bar {
+  /*background-image: linear-gradient(0deg, #f68e1e, #f68e1e 50%, transparent 50%);*/
+  /*background-size: 100% $header-background-size;*/
+}
+
+.bar.bar-header {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	//border-bottom: 3px solid $header-background-color;
+	button i.icon {
+		color:$header-title-color; 
+	}
+	background-color: $header-color;
+	.title {
+		color:$header-title-color; 
+	}
+}
+
+.bar-header span.left-buttons .ion-chevron-left, .bar-header span.right-buttons .ion-navicon {
+	color:$menu-header-font-color; 
+} 
+
+// Header & Menu bar icon size
+.bar.bar-header .button-clear i.icon.ion-chevron-left:before,
+.bar.bar-header .buttons.buttons-left button.button.button-clear.ion-chevron-left:before {
+	font-size:$app-default-header-icon-size; 
+}
+
+//Menu backdrop
+.menu-open .content-backdrop {
+	position: fixed;
+	top: 44px;
+	left: 0;
+	z-index: 11;
+	width: 100%;
+	height: 100%;
+	background-color: $menu-backdrop-color;
+	-webkit-transition: 0.2s opacity linear;
+	transition: 0.2s opacity linear;
+}
+
+.menu-open.platform-ios.platform-cordova .content-backdrop {
+	top: 64px; 
+}
+
+//Side Menu
+
+ion-side-menu {
+
+	.bar.bar-header {
+		background-color: $menu-internal-header-color;
+		.title {
+			color:$menu-internal-header-title-color; 
+		}
+	}
+
+	.subcategory {
+		.row {
+			padding-left: 25px; 
+			h4 {
+				font-size: 15px; 
+			}
+			.icon {
+				font-size: 24px; 
+			}
+			+ hr {
+				margin-left: 35px; 
+			}
+		}
+	}
+
+	.row {
+		&.activated h4 {
+			color: white;
+		}
+		&.activated {
+			background: $instrument-activated-color;
+		}
+		height:$menu-option-height; 
+		padding:$menu-option-padding; 
+		background: $menu-option-background-color;
+	}
+
+	hr {
+		margin:0 0 0 $menu-option-separator-margin; 
+		background-color: $menu-option-background-color;
+	}
+
+	h4 {
+		color: $menu-option-color; 
+	}
+
+	.currentMenuOption {
+		background-color: $app-default-background-color;
+		border-right: $menu-selected-border-width solid $icon-color; 
+	}
+
+	.row:not(.currentMenuOption) {
+		padding-right:  $menu-selected-border-width + 5px; 
+	}
+}
+
+
+//Common 
+//App Background
+.pane {
+	background-color:$app-default-background-color; 
+}
+
+.mainContainer {
+	padding: $main-container-padding; 
+	margin-top:$main-container-margin-top;
+}
+
+.row {
+	padding:10px; 
+	p, h4, h6 {
+		margin-bottom:0;
+		margin-top:0; 
+		padding-top:0; 
+		padding-bottom:0; 
+	}
+	&.instrument {
+		border
+		+ hr {
+			margin: 0 7px; 
+		}
+		&.activated {
+			background-color: $instrument-activated-color;
+			p, i.icon {
+				color: $header-color; 
+			}
+		}
+		padding: 10px 7px; 
+		
+		.col-10:first-child {
+			padding-left:0;
+			padding-right:2px; 
+		}
+
+		.col:nth-child(2) {
+			padding-left:4px; 
+			padding-right:2px; 
+		}
+
+		.col:nth-child(3) {
+			padding-left:2px;  
+			padding-right:0px; 
+		}
+
+		.col:last-child {
+			padding-left:5px; 
+			padding-right:0;
+		}
+
+		&:last-child {
+		}
+	}
+}
+
+.col.grow {
+	flex-grow: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+}
+
+.secondaryContainer {
+	border: 1px solid $container-border-color;
+	background: $secondary-container-background-color; 
+	.item {
+		background: $secondary-container-item-background-color;
+		border-top:0; 
+		&:last-child {
+			border-bottom-left-radius: $container-round-corner; 
+			border-bottom-right-radius: $container-round-corner; 
+		}
+	}
+	&#selection .activated {
+		background-color: $instrument-activated-color; 
+		p, i.icon {
+			color: $header-color; 
+		}
+
+	}
+}
+
+.list#confirm {
+	margin-top:15px;
+	.item.item-divider {
+		font-size: $app-default-button-text-size; 
+		background-color: $list-divider-color;
+	}
+	h3 {
+		font-size: $list-confirm-text-size; 
+		margin:0; 
+	}
+}
+
+.item  {
+	background:$app-default-item-background; 
+	p,h1,h2,h3,h4,h5,h6 {
+		font-family: $app-default-font-family;
+	}
+
+	h3 {
+		font-size:$app-default-item-h3-size; 
+	}
+
+	h2 {
+		font-size:$app-default-item-h2-size; 
+	}
+	&.item-select {
+		height: 40px;
+		select {
+			background-color:transparent; 
+			max-width: 100%; 
+			direction:ltr; 
+			option {
+				direction: ltr; 
+				overflow: hidden;
+			} 
+		}
+	}
+	&.item-icon-right + i.icon { 
+		right: 0;
+	}
+	&#selectRound {
+		margin: 12px 6px 20px 6px; 
+		background-color: $section-title-background-color;
+		color:white; 
+		padding-left:10px;
+		select {
+			color: white; 
+		}
+		&.item-select:after {
+			color:white; 
+		} 
+
+	}
+}
+
+.item-input-wrapper {
+	padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.app-input  {
+	margin-right: 8px;
+    margin-left: 8px;
+ 	border: 0; 
+	background-color:$app-default-button-color; 
+	border-radius: $button-round-corner; 
+	p {
+		margin:0; 
+		color: $button-text-color; 
+		font-size:$app-default-button-text-size;
+	} 
+	&.activated {
+		border: none; 
+ 		background-color: $main-color; 
+	}
+}
+
+button.app-input {
+	min-width: 40vw;
+}
+
+.fix-content-bottom {
+	width:100%; 
+	position:absolute;
+	bottom:0; 
+}
+
+hr {
+	position:relative; 
+	display: block;
+    border: 0;
+    border-top: 1px solid $app-default-separator-color;
+    margin: $app-default-separator-margin; 
+}
+
+.backdrop {
+	background-color: $app-default-backdrop-color;
+}
+
+.loading-container .loading {
+	background-color: transparent;
+}
+
+.spinner {
+	&#ios {
+		stroke: $app-default-spinner-color; 
+		fill: $app-default-spinner-color; 
+	}
+	svg {
+		width: $app-default-spinner-size; 
+		height: $app-default-spinner-size; 
+	}
+}
+
+.rejected, .icon.rejected {
+	color:red; 
+}
+
+.successful, .icon.successful {
+	color:green; 
+}
+
+.icon {
+	color: $icon-color;
+	font-size: $icon-size; 
+}
+
+p.amount, h4.amount {
+	font-size: 18px; 
+}
+
+.amount {
+	font-weight:bold;
+	color: $financial-amount-color; 
+}
+
+.truncate {
+    width: 100%; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.platform-ios {
+	input[type] {
+		line-height: 32px;
+	}
+	.item-input-inset .item-input-wrapper input {
+		line-height:24px; 
+	}
+}
+
+input[type] {
+	line-height: 20px;
+	font-size: 14px;
+	font-family: $app-default-font-family; 
+	color: $text-color; 
+}
+
+input::-webkit-input-placeholder {
+  color: $placeholder-color;
+  opacity : 1;
+}
+input:-moz-placeholder {
+  color: $placeholder-color;
+  opacity : 1;
+}
+input:-ms-input-placeholder { /* IE10+ */
+  color: $placeholder-color;
+  opacity : 1;
+}
+
+
+.checkbox input:checked:before, .checkbox input:checked + .checkbox-icon:before {
+  background: $header-color !important; 
+  border-color: $header-color !important;
+}
+
+.checkbox-icon:after {
+  border: 2px solid white;
+  border-top: 0;
+  border-right: 0;
+}
+
+.ion-ios-checkmark-outline, .ion-android-checkbox-outline {
+	color: $header-color;
+}
+
+.no-padding {
+	padding: 0;
+}
+
+//Modal
+
+//Terms and conditions modal
+
+@media only screen and (max-height : 568px) {
+	.scroll-size {
+		height:170px; 
+	}
+
+	.modal-backdrop {
+    top: 20%;
+  }
+}
+
+@media only screen and (min-height : 569px) {
+	.scroll-size {
+		height:230px; 
+	}
+
+	.modal-backdrop {
+    top: 26%;
+  }
+}
+
+.scroll-size {
+	margin-top:1px; 
+	p {
+		padding: 10px; 
+	}
+}
+
+//Center modal
+.modal-backdrop {
+    left: 5%;
+    right: 5%;
+    width: 90%;
+    height: 75%;
+}
+
+.modal {
+	border-top-right-radius: $container-round-corner; 
+	border-top-left-radius: $container-round-corner; 
+	background-color: transparent;
+
+	div#copyright p {
+		margin-bottom:2px; 
+		color: black; 
+		&.app-name {
+			color: $main-color;
+		}
+	}
+
+	.row.copyrightRow {
+		padding-top: 0;
+		.col {
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+	}
+
+	.secondaryContainer #copyright { 
+		padding-bottom: 0;
+	}
+
+	button#copyrightButton {
+		border-radius: 0;
+		background-color: $header-background-color;
+		color: white;
+		&.activated {
+			border: none; 
+ 			background-color: $main-color;
+ 			color: white;
+		}
+	}
+
+	button.app-input {
+    min-width: 0;
+	}
+
+	.item-checkbox {
+		border-bottom-right-radius: $container-round-corner; 
+		border-bottom-left-radius: $container-round-corner;
+	}
+
+	.secondaryContainer {
+		border:0; 
+		background-color:$app-default-modal-background; 
+		box-shadow: none; 
+	}
+
+	.sectionTitle .icon {
+		font-size:$section-title-modal-icon-size;  
+	}
+
+	h3.sectionTitle {
+		text-align: center;
+	}
+
+	hr {		
+		margin:0;
+		border-color: #387EF5; 
+	}
+
+	.item-checkbox {
+		border:0;  
+	}
+	
+	div#fix {
+		position:relative;
+		top:60px; 
+	}
+
+	&.mechanism {
+		input {
+			border: 1px solid #E2DBDB;
+			width: 100%; 
+			padding: 4px; 
+		}
+		p {
+			margin-bottom:5px ;
+		}
+		
+		#inputContainer {
+			padding: 0 10px 10px 10px; 
+		}
+	
+		.row {
+			&#inputs {
+				padding:0px 20px 20px 20px; 
+			}
+			button {
+				line-height: 5px; 
+				height:45px; 
+				&:first-child {
+					border:1px solid $main-color; 
+					color: $main-color; 
+					background-color: white; 
+					&.activated {
+						color: white; 
+						background-color: $main-color; 
+					}
+				}
+				&:last-child {
+					color:white; 
+				}
+			}
+			&:last-child {
+				padding: 15px 10px 20px 10px; 
+			}
+		}
+	}
+}
+
+.modal-backdrop-bg {
+    transition: opacity 300ms ease-in-out;
+    -webkit-transition: opacity 300ms ease-in-out;
+    background-color: #000;
+    opacity: 0;
+}
+
+.active .modal-backdrop-bg {
+    opacity: 0.75;
+}
+
+//Popup CSS
+
+.popup-container {
+ 	.popup {
+ 		width: 275px; 
+		border-radius: 0; 
+		background-color: #FFF;
+		font-family: Calibri, sans-serif;
+		.popup-head {
+			padding: 5px 10px;
+			border-bottom: 0px;
+		}
+		.popup-body {
+			padding: 10px 10px 3px 10px; 
+			text-align: center; 	
+		}
+		.popup-buttons {
+			padding-bottom: 0;
+			padding-right: 0; 
+			padding-left: 0;
+			min-height: 0px;
+			button.activated {
+				border-radius: 0; 
+				background-color: $popup-activated-color;
+				color: white;  
+			}
+			.button {
+				background-color: #FFF;
+				border-bottom: 0px;
+				//color: rgb(22, 82, 172);
+				color: $dashboard-item-title-color;
+				border-right:0px; 
+				margin-right:0; 
+			  //border-color: rgb(22, 82, 172);
+			  border-color: $dashboard-item-title-color;
+			    &:first-child {
+			    	border-left: 0px; 
+					border-top-right-radius: 0;
+					border-bottom-left-radius: 0;
+			    }
+			    &:last-child {
+		    	    border-top-left-radius: 0;
+					border-bottom-right-radius: 0;
+			    }
+			}
+		}
+	}
+}
+
+	
+#search-bar input[type] {
+    font-size: 17px;
+}
+
+label i.icon.ion-search {
+	font-size:21px; 
+}
+
+//popover css
+
+.platform-android .popover-backdrop, 
+.platform-android .popover-backdrop.active, 
+.platform-ios .action-sheet-backdrop.active {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.platform-android .popover .item.sectionTitle {
+	background-color: $section-title-background-color;
+	.icon {
+		color: white; 
+	}
+}
+
+.popover { 
+	border-radius: 0; 
+	height: 44px + (48px * 3); 
+	.sectionTitle {
+		height: 45px; 
+		background-color: $section-title-background-color;    
+		.icon  {
+			font-size:$section-title-modal-icon-size; 
+		}
+	}
+
+	#option {
+		height: 48px;
+		.row {
+			height: 48px; 
+			padding:5px; 
+			&[disabled] {
+				opacity: 0.4; 
+			}
+			&.activated {
+				background-color: $instrument-activated-color; 
+				color: white; 
+			}
+		} 
+	}
+	.row + .row {
+    	margin-top: 0;
+	}
+
+	.item {
+		border:0; 
+	}
+
+	.scroll-content {
+		margin-top:0;  
+		overflow-y: hidden; 
+		margin:0; 
+	}
+
+	hr {
+		margin:0 8px; 
+		border-top: 1px solid $popover-hr-color; 
+	}
+}
+
+
+//Schema Form CSS
+
+.schemaForm {
+
+	&.secondaryContainer {
+		padding-top:5px;
+	}
+
+	form {
+    	padding: 0px 1px 10px 1px; 
+
+    	fieldset, legend {
+    		border: none; 
+    	}
+
+		fieldset {
+			margin:0; 
+			padding:0; 
+		}
+
+		span.sr-only, .help-block, span.form-control-feedback, span.form-control-feedback + span {
+			display:none 
+		}
+
+		select {
+			color: $text-color; 
+			-webkit-appearance: none; 
+		}
+
+		label.input-select, select, .item.item-select {
+			//color: $text-color; 
+		}
+
+		input[type="text"]::-webkit-input-placeholder {
+  			color: gray  !important;	
+		}
+
+		.sectionTitle.control-label {
+			margin-top: 10px; 
+		}
+
+		.list {
+			margin-bottom:5px; 
+		}
+
+		.item {
+			border-top:0;
+			border-left: 1px solid #E2DBDB;
+			border-right: 1px solid #E2DBDB; 
+			&.item-radio .radio-content {
+				.item-content {
+					padding: 12px 45px 12px 10px;
+					margin-left:10%;
+				}
+				.radio-icon {
+    				padding: 6px 14px;
+				} 
+			}
+			&.item-select:after{
+				right: 10px; 
+				color: black; 
+			}
+			&.item-input {
+				padding: 3px 0;
+			}
+			&:last-child {
+				border-bottom: 1px solid rgb(221, 221, 221);
+			}
+		}
+
+	 	.form-group{
+			padding: 0 10px; 
+		}
+	}
+}
+
+//Datepicker
+
+.popup-container.ionic_datepicker_popup {
+	.button {
+		height: 50px; 
+	}
+	.calendar_grid {
+    	height: 255px;
+	}
+	.popup {
+
+		.date_selection {
+			overflow-y: hidden;
+		}
+		height:400px; 
+		.popup-body {
+			overflow-y: hidden;
+		}
+	}
+
+}
+
+.ionic_datepicker_popup { 
+	.popup-body {
+		.selected_date_full {
+    	background-color: $dashboard-item-title-color !important;
+  	} 
+
+  	.month_select, .year_select {
+  		border-bottom: 1px solid $dashboard-item-title-color !important;
+  	}
+
+  	.month_select:after, .year_select:after {
+    	color: $dashboard-item-title-color !important;
+		}
+  }
+
+  .selected_date {
+    background-color: $dashboard-item-title-color !important;
+  }
+
+  .today {
+    border: 1px solid $dashboard-item-title-color !important;
+  }
+}

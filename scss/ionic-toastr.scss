@@ -1,0 +1,31 @@
+.platform-ios, .platform-android {
+
+	.toast {
+		background-color: $light;
+	}
+
+	.toast-success {
+		background-color: $balanced;
+	}
+
+	.toast-error {
+		background-color: rgba(199, 0, 0, 0.8);
+	}
+
+	.toast-info {
+		background-color: rgba(246, 142, 30, 0.9);
+	}
+
+	.toast-warning {
+		background-color: $energized;
+	}
+
+	.toast-progress {
+		background-color: $dark;
+	}
+}
+
+.toast-top-right#toast-container {
+ 	top: 100px; 
+ 	color: rgba(255, 255, 254, 1);
+}

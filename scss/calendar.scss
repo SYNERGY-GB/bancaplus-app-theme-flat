@@ -1,0 +1,87 @@
+.appMenu .dates {
+
+	.item#date {
+	    padding: 10px;
+	    border:none; 
+	    background-color: $calendar-date-background; 
+	}
+
+	.nextPayment {
+		position: relative;
+	}
+
+	.lastPayment {
+		position: relative;
+	}
+
+	.nextPayment::before {
+		z-index: 2;
+		content: ' ';
+  		position: absolute;
+  		top: 0px;
+    	right: 0px;
+    	bottom: 0px;
+    	left: 0px;
+		background: url($calendar-next-payment) no-repeat center; 
+		background-size: contain; 
+		-webkit-transform: rotate(90deg);
+  		transform: rotate(90deg);
+	}
+
+	.lastPayment::after {
+		z-index: 4;
+		content: ' ';
+  		position: absolute;
+  		top: 0px;
+    	right: 0px;
+    	bottom: 0px;
+    	left: 0px;
+		background: url($calendar-last-payment) no-repeat center;
+		background-size: contain; 
+	}
+
+	.today {
+		background: url($calendar-today) no-repeat center; 
+		background-size: contain; 
+	}
+
+	.calendar-container {
+		background-color:$calendar-container-background;  
+	    .calendar-table {
+	    	padding-top:10px; 
+	    }
+	    td p {
+	    	margin: 0;
+		    height: 30px;
+		    line-height: 40px;
+	    }
+	}
+
+	tr  > td {
+		height:38px; 
+	}
+
+	div#legend {
+	    padding: 5px 0px 5px 0px;
+	    p {
+	    	padding-right:0;
+	    	padding-left:0; 
+	    	margin-bottom:5px; 
+	    } 
+	}
+
+	.calendar-table {
+		table {
+			width: 100%; 
+	    }
+	}
+
+	.calendar-table table td {
+	    text-align: center;
+	}
+
+	.sectionTitle {
+		background-color: $header-background-color
+	}
+
+}

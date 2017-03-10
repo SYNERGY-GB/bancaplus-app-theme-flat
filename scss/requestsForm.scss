@@ -1,0 +1,84 @@
+.appMenu .requestsForm {
+	
+	.no-padding {
+		padding: 0;
+	}
+
+	.no-padding-but-left {
+		padding-top: 0;
+		padding-bottom: 0;
+		padding-right: 0;
+	}
+
+	sectionTitle{
+		text-align:center;
+	}
+	.no-padding-but-right {
+		padding-top: 0;
+		padding-bottom: 0;
+		padding-left: 0;
+	}
+
+	.no-overflow {
+		overflow: hidden;
+	}
+
+	.align-right {
+		text-align: right;
+		direction: rtl;
+	}
+
+	.item p {
+		color: $app-default-font-color;
+		font-size: 13px;
+	}
+	
+	#info {
+		background-color: #F2F2F2;
+
+		.item-icon-left {
+			background: none;
+		}
+
+		.item {
+			border:0; 
+			h3 {
+				font-size:18px; 
+			}
+		}
+		+ .mainContainer {
+			margin-top:0; 
+		}
+
+		&:first-child {
+			margin-top:10px; 
+		}
+	} 
+
+ 	.schemaForm form {
+		.form-group {
+			padding: 0;
+		}
+
+		select {
+			padding-left: 10px;
+		}
+
+		.item.item-input {
+    		padding: 10px;
+ 		}
+ 	}
+} 
+
+.appMenu .requestsFormResult {
+
+	.icon {
+    	font-size: 21px;
+	}
+
+	.reference {
+		p {
+			color: $secondary-color;
+		}
+	}
+}

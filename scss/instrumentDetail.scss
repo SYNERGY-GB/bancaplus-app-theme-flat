@@ -1,0 +1,106 @@
+.appMenu .instrumentDetail {
+
+	.row {
+		padding: 5px 10px; 
+	}
+
+	.secondaryContainer {
+		margin-bottom: 10px;
+	}
+
+	.item#selectRound {
+		border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+		margin:0; 
+		option {
+			color: $app-default-font-color;
+		}
+	}
+
+	.ion-calendar, .ion-forward {
+		color: $header-color;
+	}
+
+	.ion-calendar{
+		font-size: 25px;
+	}
+
+	img#banner {
+		width:100%; 
+	}
+
+	.row .col#balanceLabel {
+		padding-right:0; 
+		h4 {
+			font-size: 16px;
+		}
+	}
+
+	button.icon-left {
+		color: $button-text-color; 
+	}
+
+	.truncate {
+		white-space: normal;
+	}
+
+	#monthlyExpenses {
+
+		hr {
+			margin: 5px; 
+		}
+
+		.row {
+			padding-left: 7px; 
+			padding-right: 7px; 
+		}
+
+		.dateBox {
+			padding:0; 
+			border-radius: $container-round-corner; 
+		    height: 50px; 
+
+			h3 {
+				margin:0; 
+				background-color: white; 
+			}
+
+			p {
+				font-size: 11px;
+				height: 18px;
+				color: white; 
+			}
+
+			+ .col-33 {
+		    	padding-left:5px; 
+		    }
+		}
+
+		.consume {
+			.negative .row {
+				.dateBox {
+					background-color: $secondary-color; 
+				}
+				
+				.amount {
+					color: $secondary-color; 
+				}
+			}
+			.row {
+				.dateBox {
+					background-color: $instrument-positive-color; 
+				}
+
+				.amount {
+					color: $instrument-positive-color; 
+				}
+			}
+		}
+
+		.consume:last-child {
+			margin-bottom:5px; 
+		}
+
+	}
+
+}
