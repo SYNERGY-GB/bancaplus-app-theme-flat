@@ -28,7 +28,7 @@
 	    padding: 0 0 0 16px;
 		}
 
-		.input-box {
+	.input-box {
     	top: 0vh;
     	margin-left: 10px;
     	margin-right: 10px;
@@ -65,7 +65,7 @@
 		.input-box {
     	top: $login-box-position-top;
     	margin-left:$login-box-margin;
- 			margin-right:$login-box-margin;
+ 		margin-right:$login-box-margin;
    	}
   }
 }
@@ -117,6 +117,7 @@
 	}
 	
 	.sectionTitle{
+
 			margin-left:0px;
 			width:100%;
 
@@ -166,7 +167,7 @@
  		}
  	}
 
- 	.fix-content-bottom img {
+ .fix-content-bottom img {
    	width: 100%;
     padding-left: 25%;
     padding-right: 25%;
