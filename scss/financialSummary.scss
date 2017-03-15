@@ -32,11 +32,17 @@
 		}
 	}
 
+	.instContainer{
+		margin-top:20px; 
+		margin-bottom:20px;
+	}
+
 	.ion-forward {
 		color: $app-default-button-color;
 	}
 
 	.totalAmount {
+		margin-top:-20px;
 		background-color: $app-default-button-color;
 		font-size: 18px;
 		font-weight:bold;

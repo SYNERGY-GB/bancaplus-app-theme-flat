@@ -64,6 +64,7 @@ h3.sectionTitle {
 	padding: 10px;
 	margin-left: 10%;
 	width:80%;
+	position:relative;
 	&.item { 
 		border:0; 
 		background-color: $section-title-background-color; 
@@ -252,6 +253,7 @@ ion-side-menu {
 }
 
 .secondaryContainer {
+	margin-top:-20px;
 	border: 1px solid $container-border-color;
 	background: $secondary-container-background-color; 
 	.item {

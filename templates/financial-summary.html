@@ -19,6 +19,7 @@
 			<div class="secondaryContainer">
 
 				<!-- instrument -->
+				<div class="instContainer">
 				<div ng-repeat="instrument in section.data">
 					<div class="row instrument" on-hold="goToInstrumentOptions(instrument, $event, $parent.$index)" 
 						 ng-click="instrument.hasDetail && goToDetail(instrument)" ng-class="{'hasTotal' : params.showTotal}">
@@ -95,10 +96,11 @@
 					</div>
 					<hr ng-if="$index<section.data.length-1"/>	
 				</div>
+				</div>
 			</div>
 				
 				<!-- Accounts total amount -->
-				<div style="margin-left: 10%;width:80%;height:20%;" class="row instrument totalAmount" ng-if="section.total">
+				<div style="margin-left: 10%;width:80%;" class="row instrument totalAmount" ng-if="section.total">
 					<div class="col col-90 text-center">
 						<span id="label">{{'total' | translate}}:</span> 
 						<span class="amount"> {{section.total.displayAmount}} </span>
