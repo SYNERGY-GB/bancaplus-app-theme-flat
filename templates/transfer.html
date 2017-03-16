@@ -1,0 +1,47 @@
+<ion-view mz-screen cache-view="false">
+    <ion-nav-title>{{params.title | translate }}</ion-nav-title>
+    <ion-content>
+        <img ng-src="{{params.progressResource}}" class="full-image padding" />
+		<div id="search-bar">
+            <div class="item-input-inset  item-icon-right">
+                <label class="item-input-wrapper" id="search-input">
+                   	<input type="text"  placeholder="{{'search' | translate}}" ng-model="search" />
+                   	<i class="icon ion-search placeholder-icon"></i>
+                </label>
+            </div>
+        </div>
+        <div class="mainContainer" ng-if="data.length>0">
+            <div class="sectionTitle">
+            	<h3> {{'transfer_account_origin' | translate}} </h3>
+            </div>
+            <div id="accounts" class="secondaryContainer animated fadeIn">
+                <div class="instContainer">
+                <div ng-repeat="instrument in data | filter:search:strict">
+                	<div class="row instrument padding-left padding-right" ng-click="goTo(instrument)">
+                        <div class="col col-10 col-center text-center">
+                            <img ng-src="{{params.checkingIcon}}" />
+                        </div>
+            			<p class="col col-center account"> 
+                            {{::instrument.name | limitTo: 14}} {{::instrument.maskedAccountNumber | limitTo: -7}}
+                        </p>	
+            			<p class="col col-50 col-center text-right amount" 
+                           ng-repeat="available in instrument.available" 
+                           ng-if="available.currency == defaultCurrency"> 
+                            {{::available.displayAmount}} 
+                        </p>
+                	</div> 
+                    <hr ng-if="$index<data.length-1"/>
+                </div>
+             </div>
+            </div>
+        </div>
+        <div ng-if="data.length==0">
+            <h4 class="padding text-center">{{'transfer_no_source_instruments' | translate}} </h4>
+            <div class="padding text-center">
+                <button class="app-input button" ng-click="goBack()">
+                    <p>{{'go_back' | translate}} </p>
+                </button>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

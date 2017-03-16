@@ -25,6 +25,7 @@
 		    			</div>
 		    		</div>
 		    		<div class="secondaryContainer" ng-if="section.toggle">
+		    		  <div class="instContainer">
 		    			<div ng-class="{'shortAnimated fadeInDown' : section.toggle}">
 			    			<div ng-repeat="beneficiary in section.filteredData">
 			    				<ion-checkbox class="item-checkbox-right" ng-model="beneficiary.model">
@@ -40,6 +41,7 @@
 			                    <hr ng-if="$index<section.filteredData.length-1" />
 			                </div>
 		    			</div>
+		    		</div>
 		    		</div>
 		    	</div>
 		    </div>

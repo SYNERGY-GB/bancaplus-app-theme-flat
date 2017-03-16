@@ -1,0 +1,67 @@
+.appMenu .p2pTransfer {
+
+	h4 {
+		color: $secondary-blue;
+		font-weight: bold;
+		font-style: italic;
+		font-size: 16px;
+	}
+
+	.sectionTitle {
+		&.item { 
+			border:0; 
+			background-color: $section-title-background-color;
+		}
+	}
+
+	.special-checkbox {
+		padding-left: 50px;
+	}
+
+	.row.margin-bottom {
+		margin-bottom: 10px;
+	}
+
+	.no-padding-left {
+		padding-left: 0;
+	}
+
+	.no-padding-left-inner {
+		padding-left: 43px;
+		&.item-checkbox .checkbox {
+    		padding-left: 0;
+		}
+	}
+
+	.no-padding-right {
+		padding-right: 0;
+	}
+
+	.app-input.item-input {
+		background-color: white; 
+		height: $input-height;
+		border-radius: 0;  
+		border: 1px solid $input-border-color; 
+	}
+
+	.secondaryContainer, .item {
+		border: 0; 
+	}
+
+	.item-checkbox .checkbox {
+		padding-right:5px; 
+	}
+
+	.item-icon-left .row, .item-icon-left .col, .item-checkbox .row, .item-checkbox .col,
+	.radio-content .row, .radio-content .col{
+		padding: 0;
+	}
+
+	.item h3 {
+    	white-space: normal;
+    }
+
+	button {
+		margin-bottom:20px; 
+	}
+}

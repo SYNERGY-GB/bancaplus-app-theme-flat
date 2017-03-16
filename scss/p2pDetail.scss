@@ -1,0 +1,92 @@
+.appMenu .p2pDetail {
+
+	.item#selectRound {
+		border-bottom-right-radius: 0;
+    	border-bottom-left-radius: 0;
+		margin:0;
+		select {
+			font-weight: bold;
+		} 
+	}
+
+	.importantDates { 
+		&.activated {
+			background-color: $instrument-activated-color;
+			h4, i.icon {
+				color: white; 
+			}
+			border-bottom-right-radius: $container-round-corner;
+    		border-bottom-left-radius: $container-round-corner;
+		}
+	}
+
+	img#banner {
+		width:100%; 
+		height: 10vh; 
+	}
+
+
+	.truncate {
+		white-space: normal;
+	}
+
+	#monthlyExpenses {
+
+		hr {
+			margin: 5px; 
+		}
+
+		.row {
+			padding-left: 7px; 
+			padding-right: 7px; 
+		}
+
+		.dateBox {
+			padding:0; 
+			border-radius: 0; 
+		    height: 50px; 
+
+			h3 {
+				margin:0; 
+				background-color: white; 
+			}
+
+			p {
+				font-size: 11px;
+				height: 18px;
+				color: white; 
+			}
+
+			+ .col-33 {
+		    	padding-left:5px; 
+		    }
+		}
+
+		.consume {
+			.negative .row {
+				.dateBox {
+					background-color: $instrument-negative-color; 
+				}
+				
+				.amount {
+					color: $instrument-negative-color; 
+				}
+			}
+			.row {
+				.dateBox {
+					background-color: $instrument-positive-color; 
+				}
+
+				.amount {
+					color: $instrument-positive-color; 
+				}
+			}
+		}
+
+		.consume:last-child {
+			margin-bottom:5px; 
+		}
+
+	}
+
+}

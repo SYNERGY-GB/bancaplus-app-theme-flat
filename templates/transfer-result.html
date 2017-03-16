@@ -13,6 +13,7 @@
     			<h3>{{'transfer_result' | translate }}</h3>
     		</div>
     		<div class="secondaryContainer">
+                <div class="instContainer">
                 <div id="source">
                     <p class="subtitle" id="color"> {{'transfer_confirm_source_instrument' | translate}} </p>
                     <p class="subtitle">
@@ -60,6 +61,7 @@
                     <hr ng-if="$index < data.sections.length - 1" />
                 </div>
     		</div>
+          </div>
     	</div>
 	    <div class="text-center padding">
 		    <button type="button" class="app-input button" ng-click="goBack()">

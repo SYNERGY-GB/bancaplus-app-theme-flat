@@ -1,0 +1,42 @@
+<ion-view cache-view="false" mz-screen>
+  <ion-nav-title>{{params.title | translate }}</ion-nav-title>
+	<ion-header-bar align-title="center" class="bar bar-subheader" id="remaining">
+   		<div class="text-center" ng-repeat="available in sourceInstrument.available" 
+   			 ng-if="available.currency == sourceInstrument.currency">
+			<p class="color3 truncate"> 
+				{{::sourceInstrument.name}} {{::sourceInstrument.maskedAccountNumber | limitTo: -7}} 
+			</p>
+			<p class="color3"> {{::available.displayAmount}} </p>
+   		</div>
+    </ion-header-bar>
+	<ion-content>
+		<img ng-src="{{params.progressResource}}" class="full-image padding" />
+		<div class="mainContainer" ng-repeat="section in sections"> 
+			<div class="sectionTitle">
+				<h3> {{::section.displayName}} </h3>
+			</div>
+			<div class="secondaryContainer schemaForm">
+			  <div class="instContainer">
+				<div ng-repeat="transfer in section.data">
+					<p class="subtitle" id="color" ng-if="transfer.displayName || transfer.maskedAccountNumber"> 
+						{{::transfer.displayName}} {{::transfer.maskedAccountNumber | limitTo:-7}}
+					</p>
+					<form ng-init="forms[$parent.$index][$index]=transfer.schema.name" 
+						  name="forms[$parent.$index][$index]"
+						  sf-schema="transfer.schema.schema" 
+				     	  sf-model="transfer.schema.model" 
+						  sf-form="transfer.schema.form"
+						  sf-options="formDefaultOptions"
+						  autocomplete="off">
+					</form>
+				</div>
+			  </div>
+			</div>
+		</div>
+		<div class="text-center padding">
+			<button type="submit" class="app-input button" ng-click="onSubmit()">
+				<p>{{'next' | translate}} </p>
+			</button>
+		</div>
+	</ion-content>
+</ion-view> 

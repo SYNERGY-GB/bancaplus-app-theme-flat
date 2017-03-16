@@ -1,0 +1,48 @@
+<ion-view mz-screen hide-back-button="true">
+	<ion-nav-title>{{title}}</ion-nav-title>
+ 	<ion-nav-buttons side="left">
+      <button class="button button-icon button-clear ion-chevron-left" ng-click="goBack()">
+      </button>
+  </ion-nav-buttons>
+	<ion-content>
+		<div ng-repeat="schema in concatSchemas()" ng-show="$index==schemas.length">
+			<div ng-repeat="info in schema.extraInfo" ng-if="schema.extraInfo" id="info">
+		    	<div ng-switch="info.propertyType"  
+		    	     ng-class="{'item item-icon-left' : info.propertyType=='balance' || info.propertyType=='string'}">
+			    		<i class="icon {{platformIcon}}" 
+			    			 ng-if="info.propertyType=='balance' || info.propertyType=='string'"></i>
+			    		<h4 ng-switch-when="html" 
+			    				ng-if="info.id=='terms'"
+			    				class="link text-center" 
+			    				ng-click="showTerms(info.htmlValue)">
+			    				{{info.displayName}}
+			    		</h4>
+		    			<h3 ng-switch-when="balance">
+		    				{{info.balanceValue[0].displayName}}: {{info.balanceValue[0].displayAmount}}
+		    			</h3>
+		    			<h3 ng-switch-when="string">
+		    				{{info.stringValue}}
+		    			</h3>
+		    	</div>
+		    	<hr ng-if="$index<schema.extraInfo.length-1"/>
+		  </div>
+			<div class="mainContainer schemaForm">
+			   <div class="instContainer">
+				<form ng-init="forms[$index]='form'+$index"
+					  name="forms[$index]"
+				  	  sf-schema="schema.data.schema" 
+			     	  sf-model="schema.data.model" 
+					  sf-form="schema.data.form"
+					  sf-options="formDefaultOptions"
+					  autocomplete="off">
+				</form>
+			</div>
+			</div>
+		</div>
+		<div class="text-center padding" ng-show="currentSchema.data">
+			<button type="submit" class="app-input button" ng-click="onSubmit()">
+				<p>{{'next' | translate}} </p>
+			</button>
+		</div>
+	</ion-content>
+</ion-view>

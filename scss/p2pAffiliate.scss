@@ -1,0 +1,14 @@
+.appMenu .p2pAffiliate {
+
+	.item-icon-left .row, .item-icon-left .col, .item-checkbox .row, .item-checkbox .col,
+	.radio-content .row, .radio-content .col{
+		padding: 0;
+	}
+
+	.app-input.item-input, input[disabled] {
+		background-color: white; 
+		height: $input-height;
+		border-radius: 0;  
+	}
+
+}

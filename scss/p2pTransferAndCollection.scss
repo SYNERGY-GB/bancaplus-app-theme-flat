@@ -1,0 +1,140 @@
+.appMenu .p2pTransfer, .appMenu .p2pCollection {
+
+	h4 {
+		color: $secondary-blue;
+		font-weight: bold;
+		font-style: italic;
+		font-size: 16px;
+	}
+
+	img.col {
+		padding-left: 0;
+    	padding-top: 0;
+    	padding-bottom: 0;
+	}
+
+	.sectionTitle {
+		&.item { 
+			border:0; 
+			background-color: $section-title-background-color;
+		}
+	}
+
+	.secondaryContainer {
+		padding-top: 10px;
+	}
+
+	.radio-content {
+		padding: 1px;
+	}
+
+	.special-checkbox {
+		padding-left: 50px;
+	}
+
+	.row.margin-bottom {
+		margin-bottom: 10px;
+	}
+
+	.margin-top {
+		margin-top: 10px;
+	}
+
+	.no-padding-left {
+		padding-left: 0;
+	}
+
+	.no-padding-top {
+		padding-top: 0;
+	}
+
+	.no-margin-top {
+		margin-top: 0;
+	}
+
+	.no-padding-bottom {
+		padding-bottom: 0;
+	}
+
+	.no-padding-left-inner {
+		padding-left: 43px;
+		&.item-checkbox .checkbox {
+    		padding-left: 0;
+		}
+	}
+
+	.no-padding-right {
+		padding-right: 0;
+	}
+
+	.no-margin-right {
+		margin-right: 0;
+	}
+
+	.app-input.item-input {
+		background-color: white; 
+		height: $input-height;
+		border-radius: 0;  
+		border: 1px solid $input-border-color; 
+	}
+
+	.item {
+		border: 0; 
+		&.item-select{
+			height: 45px;
+		}
+		&.item-select:after{
+			right: 10px; 
+			color: black; 
+		}
+	}
+
+	.item-checkbox .checkbox {
+		padding-right:5px; 
+	}
+
+	.item-icon-left .row, .item-icon-left .col, .item-checkbox .row, .item-checkbox .col,
+	.radio-content .row, .radio-content .col{
+		padding: 0;
+	}
+
+	.item h3 {
+    	white-space: normal;
+    }
+
+    select:required:invalid {
+	    color: $placeholder-color;
+	    opacity : 1;
+	}
+
+    .select {
+    	select {
+    		width: 100%;
+			color: $text-color; 
+			-webkit-appearance: none; 
+		}
+
+    }
+
+    .code { 
+	    select::-ms-expand {	
+	    	display: none; 
+	    }
+
+		select{
+			text-align: center;
+	    	text-align-last: center;
+		    -webkit-appearance: none;
+		    appearance: none;
+		    color: $text-color; 
+		}
+	}
+
+	label {
+		background-color: transparent;
+	}
+
+	button {
+		margin-bottom:20px; 
+	}
+}

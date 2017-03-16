@@ -140,9 +140,9 @@
  	}
 
  	.app-input.reset-button {
- 		background-color: $main-color;
+ 		background-color: $app-default-button-color;
  		&.activated {
- 			background-color: $secondary-color;
+ 			background-color: $main-color;
  		}
  	}
 
