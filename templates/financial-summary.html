@@ -1,22 +1,22 @@
-<ion-view mz-screen cache-view="false" hide-back-button="true">
+<ion-view mz-screen cache-view="false" hide-back-button="true" ng-style="emptyB==false && defaultBackground">
 	<ion-nav-title>{{params.title | translate }}</ion-nav-title>
     <ion-content>
     	
     	<div class="padding" id="welcomeMsg">
-	        <b> <p class="text-right">{{'financial_summary_welcome' | translate }}: {{::data.user.title }} 
+	        <b> <p class="text-right" ng-style="titleColor">{{'financial_summary_welcome' | translate }}: {{::data.user.title }} 
 	        					  {{::data.user.firstName}} {{::data.user.lastName}} </p> </b>
-	        <p class="text-right">{{'financial_summary_last_connection' | translate}}: {{::data.user.lastSession.displayDate}} </p>
-	        <p class="text-right" ng-if="data.user.lastSessionChannel">
+	        <p class="text-right" ng-style="welcomeMessage">{{'financial_summary_last_connection' | translate}}: {{::data.user.lastSession.displayDate}} </p>
+	        <p class="text-right" ng-if="data.user.lastSessionChannel" ng-style="welcomeMessage">
 	        		{{'financial_summary_channel' | translate}}: {{data.user.lastSessionChannel}}  
 	        </p>
 	    </div>
 	    
 		<div class="mainContainer" ng-repeat="section in transformedData" ng-if="section.data && section.data.length>0">
-			<div class="sectionTitle row">
+			<div class="sectionTitle row" ng-style="sectionTitle">
 				<img class="col-10 col-center" ng-src="{{params.sectionIcon}}"/>
-				<h3 class="col col-center"> {{::section.displayName}} </h3>
+				<h3 class="col col-center" ng-style="sectionTitleText"> {{::section.displayName}} </h3>
 			</div>
-			<div class="secondaryContainer">
+			<div class="secondaryContainer" ng-style="secondaryContainer">
 				<div class="instContainer">
 				<!-- instrument -->
 				<div ng-repeat="instrument in section.data">
@@ -25,38 +25,55 @@
 
 						<!-- first column: instrument icon -->
 						<div class="col col-10 text-center col-center" ng-switch="instrument.category">
-							<img ng-src="{{params.cardIcon}}" ng-switch-when="creditCards"/>
-							<img ng-src="{{params.checkingIcon}}" ng-switch-when="checkingAccounts"/>
-							<img ng-src="{{params.savingIcon}}" ng-switch-when="savingAccounts"/>
-							<img ng-src="{{params.creditIcon}}" ng-switch-when="credits"/>
-							<img ng-src="{{params.claimsIcon}}" ng-switch-when="claims"/>
-							<img ng-src="{{params.defaultIcon}}" ng-switch-default />
+							<!-- SERVER RESOURCES -->
+
+							<img ng-if='resources.summary.card_icon !== ""' class="full-image" ng-src="{{resources.summary.card_icon}}" on-error-src="{{params.cardIcon}}" ng-switch-when="creditCards"/>
+
+       						<img ng-if='resources.summary.card_icon == ""' class="full-image" ng-src="{{params.cardIcon}}"  ng-switch-when="creditCards"/>	
+
+							
+							<img ng-if='resources.summary.checking_icon !== ""' class="full-image" ng-src="{{resources.summary.checking_icon}}" on-error-src="{{params.checkingIcon}}" ng-switch-when="checkingAccounts"/>
+
+       						<img ng-if='resources.summary.checking_icon == ""' class="full-image" ng-src="{{params.checkingIcon}}" ng-switch-when="checkingAccounts"/>
+       						
+       						
+							<img ng-if='resources.summary.saving_icon !== ""' class="full-image" ng-src="{{resources.summary.saving_icon}}" on-error-src="{{params.savingIcon}}" ng-switch-when="savingAccounts"/>
+
+       						 <img ng-if='resources.summary.saving_icon == ""' class="full-image" ng-src="{{params.savingIcon}}" ng-switch-when="savingAccounts"/>       						
+	 
+ 							<img ng-if='resources.summary.credit_icon !== ""' class="full-image" ng-src="{{resources.summary.credit_icon}}" on-error-src="{{params.creditIcon}}" ng-switch-when="credits"/>
+
+       						 <img ng-if='resources.summary.credit_icon == ""' class="full-image" ng-src="{{params.creditIcon}}" ng-switch-when="credits"/> 
+
+       						
+ 							<img ng-if='resources.summary.default_icon !== ""' class="full-image" ng-src="{{resources.summary.default_icon}}" on-error-src="{{params.defaultIcon}}" ng-switch-default />
+
+       						 <img ng-if='resources.summary.default_icon == ""' class="full-image" ng-src="{{params.defaultIcon}}" ng-switch-default /> 
 						</div>
 
 						<!-- second column -->
-						<p class="instrument col col-33 col-center"> 
+						<p class="instrument col col-33 col-center" ng-style="account"> 
 							{{::instrument.name}} 
-							<span  ng-if="!(instrument.category =='claims')">
+							<span  ng-if="!(instrument.category =='claims')" ng-style="account">
 								{{::instrument.maskedAccountNumber | limitTo: -7}}
 							</span>
 						</p>
 
 						<!-- third column -->
 						<div class="col col-50 col-center text-right">
-							<p class="amount" ng-if="(instrument.category =='checkingAccounts' || 
-													 						 instrument.category == 'savingAccounts'  || 
-													 						 instrument.category =='creditCards') && 
- 													 						 amount.currency == defaultCurrency"
-																			 ng-repeat="amount in instrument.available"> 
+						<div class="col col-50 col-center text-right">
+							<p class="amount" 
+								 ng-if="(instrument.category =='checkingAccounts' || 
+												 instrument.category == 'savingAccounts'  || 
+												 instrument.category =='creditCards') && 
+												 (amount.currency == defaultCurrency) &&
+												 (!instrument.customDisplayValue)" 
+							   ng-repeat="amount in instrument.available" ng-style="accountAmount"> 
+
 								{{::amount.displayAmount}}
+								{{::instrument.customDisplayValue}}
 							</p> 
-							<p class="amount" ng-if="!(instrument.category =='checkingAccounts' ||
-													   						 instrument.category == 'savingAccounts' ||
-													   						 instrument.category =='creditCards') && 
-																				 amount.currency == defaultCurrency"
-																				 ng-repeat="amount in instrument.balance"> 
-								{{::amount.displayAmount}}
-							</p> 
+
 							<p class="text-right" ng-if="instrument.category=='creditCards'" id="status"> 
 								({{'available' | translate}})
 							</p>
@@ -90,7 +107,7 @@
 
 						<!-- fourth column: details arrow icon -->
 						<div class="col col-center text-right text-center">
-							<i class="icon {{params.arrow}}" ng-show="instrument.hasDetail"></i>	
+							<i class="icon {{params.arrow}}" ng-show="instrument.hasDetail" ng-style="defaultColor"></i>	
 						</div>
 					</div>
 					<hr ng-if="$index<section.data.length-1"/>	
@@ -99,10 +116,10 @@
 			</div>
 				
 				<!-- Accounts total amount -->
-				<div style="margin-left: 10%;width:80%;" class="row instrument totalAmount" ng-if="section.total">
+				<div style="margin-left: 10%;width:80%;" class="row instrument totalAmount" ng-if="section.total" ng-style = "totalAmount">
 					<div class="col col-90 text-center">
-						<span id="label">{{'total' | translate}}:</span> 
-						<span class="amount"> {{section.total.displayAmount}} </span>
+						<span id="label" ng-style="totalAmount">{{'total' | translate}}:</span> 
+						<span class="amount" ng-style="totalAmount"> {{section.total.displayAmount}} </span>
 					</div>
 				</div>
 		</div>

@@ -1,7 +1,9 @@
 <ion-modal-view>
 	<div class="mainContainer">
-		<h3 class="sectionTitle bold">{{'about' | translate}}</h3>
-		<div class="secondaryContainer">
+		<div class="sectionTitle" ng-style="sectionTitle">
+			<h3 class="sectionTitle bold" ng-style="sectionTitleText">{{'about' | translate}}</h3>
+		</div>
+		<div class="secondaryContainer" ng-style="secondaryContainer">
 			<div class="text-center padding" id="copyright"> 
 				<p>{{'version' | translate}}: {{appVersion}}</p>
 				<p>{{ params.bankName }}</p>
@@ -12,8 +14,8 @@
 			</div>
 			<div class="row">
 				<div class="col">
-					<button class="button button-block" id="copyrightButton" data-ng-click="modal.hide()"> 
-			        	{{'accept' | translate}}
+				<button class="button button-block" id="copyrightButton" data-ng-click="modal.hide()" ng-style="button"> 
+			        	<p ng-style="buttonText">{{'accept' | translate}}</p>
 			    </button>
 		    </div>
 	    </div>
