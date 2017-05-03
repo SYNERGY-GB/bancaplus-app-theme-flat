@@ -1,4 +1,4 @@
-<ion-view mz-screen hide-back-button="true">
+<ion-view mz-screen hide-back-button="true"  ng-style="emptyB==false && defaultBackground">
 	<ion-nav-title>{{title}}</ion-nav-title>
  	<ion-nav-buttons side="left">
       <button class="button button-icon button-clear ion-chevron-left" ng-click="goBack()">
@@ -10,7 +10,7 @@
 		    	<div ng-switch="info.propertyType"  
 		    	     ng-class="{'item item-icon-left' : info.propertyType=='balance' || info.propertyType=='string'}">
 			    		<i class="icon {{platformIcon}}" 
-			    			 ng-if="info.propertyType=='balance' || info.propertyType=='string'"></i>
+			    			 ng-if="info.propertyType=='balance' || info.propertyType=='string'" ng-style="defaultColor"></i>
 			    		<h4 ng-switch-when="html" 
 			    				ng-if="info.id=='terms'"
 			    				class="link text-center" 
@@ -40,8 +40,8 @@
 			</div>
 		</div>
 		<div class="text-center padding" ng-show="currentSchema.data">
-			<button type="submit" class="app-input button" ng-click="onSubmit()">
-				<p>{{'next' | translate}} </p>
+			<button type="submit" class="app-input button" ng-click="onSubmit()" ng-style="button">
+				<p ng-style="buttonText">{{'next' | translate}} </p>
 			</button>
 		</div>
 	</ion-content>

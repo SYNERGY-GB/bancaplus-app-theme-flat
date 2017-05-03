@@ -12,6 +12,8 @@
         <img ng-if='resources.dashboard.welcomeResource !== ""' on-error-src="{{params.welcomeResource}}" class="full-image" ng-src="{{resources.dashboard.welcomeResource}}">
         <img ng-if='resources.dashboard.welcomeResource == ""' class="full-image" ng-src="{{params.welcomeResource}}">
     </div>
+
+    </div>
     
     <div class="dashboard-menu">
         <div class="dashboard-box longAnimated slideInUp" ng-repeat="option in data" ng-click="handleAction(option)">
@@ -22,3 +24,4 @@
         </div>
     </div>
 </ion-view>
+

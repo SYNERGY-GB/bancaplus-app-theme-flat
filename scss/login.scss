@@ -1,6 +1,9 @@
 .dashboard .login.pane.startBackground {
 	background: url($login-background) no-repeat center;
-	background-size:102%;
+	background-size:100% 50%;
+	background-position:0px 0px;
+	padding-top:0;
+
 }
 
 @media only screen and (max-height: 568px) {
@@ -63,9 +66,9 @@
 		}
 
 		.input-box {
-    	top: $login-box-position-top;
     	margin-left:$login-box-margin;
  		margin-right:$login-box-margin;
+ 		position:absolute;
    	}
   }
 }
@@ -73,6 +76,7 @@
 .dashboard .login {
 	
 	.app-input.item-input {
+
 		background-color: white; 
 		border-radius: 0;  
 		border: 1px solid $input-border-color; 
@@ -117,10 +121,7 @@
 	}
 	
 	.sectionTitle{
-
-			margin-left:0px;
-			width:100%;
-
+		margin-top:-8%;
 	}
 
  	.item-input:first-child {
@@ -147,6 +148,7 @@
  	}
 
  	.input-box {
+ 		margin-top:30%;
  		position: relative; 
  		padding-bottom: 8px; 
  		background-color: $login-box-background; 
@@ -175,9 +177,9 @@
 
   .footer{
   	width:100%;
-  	height:40%;
+  	height:10%;
   	background-color:white;
-  	margin-top:110%;
+  	margin-top:90%;
   }
 
 }

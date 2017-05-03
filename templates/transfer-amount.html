@@ -1,19 +1,22 @@
-<ion-view cache-view="false" mz-screen>
+<ion-view cache-view="false" mz-screen ng-style="emptyB==false && defaultBackground">
   <ion-nav-title>{{params.title | translate }}</ion-nav-title>
 	<ion-header-bar align-title="center" class="bar bar-subheader" id="remaining">
    		<div class="text-center" ng-repeat="available in sourceInstrument.available" 
    			 ng-if="available.currency == sourceInstrument.currency">
-			<p class="color3 truncate"> 
+			<p class="color3 truncate" ng-style="defaultColor"> 
 				{{::sourceInstrument.name}} {{::sourceInstrument.maskedAccountNumber | limitTo: -7}} 
 			</p>
-			<p class="color3"> {{::available.displayAmount}} </p>
+			<p class="color3" ng-style="defaultColor"> {{::available.displayAmount}} </p>
    		</div>
     </ion-header-bar>
 	<ion-content>
-		<img ng-src="{{params.progressResource}}" class="full-image padding" />
+        <img ng-if='resources.transfers.transfer_progress_3 !== ""' class="full-image" ng-src="{{resources.transfers.transfer_progress_3}}" on-error-src="{{params.progressResource}}" class="full-image padding" />
+
+         <img ng-if='resources.transfers.transfer_progress_3 == "" || resources == undefined' class="full-image" ng-src="{{params.progressResource}}" class="full-image padding" />
+
 		<div class="mainContainer" ng-repeat="section in sections"> 
-			<div class="sectionTitle">
-				<h3> {{::section.displayName}} </h3>
+			<div class="sectionTitle" ng-style="sectionTitle">
+				<h3 ng-style="sectionTitleText"> {{::section.displayName}} </h3>
 			</div>
 			<div class="secondaryContainer schemaForm">
 			  <div class="instContainer">
@@ -34,8 +37,8 @@
 			</div>
 		</div>
 		<div class="text-center padding">
-			<button type="submit" class="app-input button" ng-click="onSubmit()">
-				<p>{{'next' | translate}} </p>
+			<button type="submit" class="app-input button" ng-click="onSubmit()" ng-style="button">
+				<p ng-style="buttonText">{{'next' | translate}} </p>
 			</button>
 		</div>
 	</ion-content>
