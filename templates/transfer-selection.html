@@ -1,39 +1,44 @@
-<ion-view cache-view="false" mz-screen>
-    <ion-nav-title>{{params.title | translate }}</ion-nav-title>
+<ion-view cache-view="false" mz-screen ng-style="emptyB==false && defaultBackground">
+    <ion-nav-title ng-style="appHeaderText">{{params.title | translate }}</ion-nav-title>
     <ion-content>
-    	<img ng-src="{{params.progressResource}}" class="full-image padding" />
+        <!-- SERVER RESOURCES -->
+        <img ng-if='srcOk(customization.resources.transfers.transfer_progress_2)' class="full-image" ng-src="{{customization.resources.transfers.transfer_progress_2}}" on-error-src="{{params.progressResource}}" class="full-image padding" />
+
+         <img ng-if='!srcOk(customization.resources.transfers.transfer_progress_2)' class="full-image" ng-src="{{params.progressResource}}" class="full-image padding" />
+
 		<div id="search-bar">
             <div class="item-input-inset  item-icon-right">
                 <label class="item-input-wrapper" id="search-input">
                    	<input type="text"  placeholder="{{'search' | translate}}" ng-model="search" ng-change="filterSections(search)" />
-                   	<i class="icon ion-search placeholder-icon"></i>
+                  	<i class="icon {{search_icon}} placeholder-icon" ng-if='srcOk(customization.style.icons.search)' ng-style="defaultColor"></i>
+                    <i class="icon ion-search placeholder-icon" ng-if='!srcOk(customization.style.icons.search)' ng-style="defaultColor"></i>  
                 </label>
             </div>
         </div>
         <div ng-if="sections.length>0">
-	       	<h4 class="padding-left padding-right padding-bottom text-center bold italic color2">
+	       	<h4 class="padding-left padding-right padding-bottom text-center bold italic color2" ng-style="defaultColor">
         		{{'transfer_select_source_instruments' | translate}} 
         	</h4>
 		    <div ng-repeat="section in sections" ng-if="section.filteredData.length>0">
 		    	<div class="mainContainer">
 		    		<div class="sectionTitle item item-icon-right" ng-class="{'addBorder' : !section.toggle}"
-		    		     ng-click="toggle($index)">
+		    		     ng-click="toggle($index)" ng-style="sectionTitle">
 		    		  <div class="row">
-		    			<h3 class="col col-90"> {{::section.displayName}} </h3>
-		    			<i class="col icon" 
+		    			<h3 class="col col-90" ng-style="sectionTitleText"> {{::section.displayName}} </h3>
+		    			<i class="col-30 icon" 
 		    			   ng-class="{ 'ion-chevron-up' : section.toggle, 'ion-chevron-down' : !section.toggle}"></i>
 		    			</div>
 		    		</div>
-		    		<div class="secondaryContainer" ng-if="section.toggle">
+		    		<div class="secondaryContainer" ng-if="section.toggle" ng-style="secondaryContainer">
 		    		  <div class="instContainer">
 		    			<div ng-class="{'shortAnimated fadeInDown' : section.toggle}">
 			    			<div ng-repeat="beneficiary in section.filteredData">
 			    				<ion-checkbox class="item-checkbox-right" ng-model="beneficiary.model">
 		    			  			<div class="row">
-							    		<div class="col grow"> 
+							    		<div class="col grow"  ng-style="account"> 
 							    			{{::beneficiary.instrument.displayName}} 
 							    		</div>
-							    		<div class="col"> 
+							    		<div class="col"  ng-style="account"> 
 							    			{{::beneficiary.instrument.maskedAccountNumber | limitTo: -7}} 
 							    		</div>
 						    		</div>
@@ -46,37 +51,42 @@
 		    	</div>
 		    </div>
 		    <div class="list mainContainer" ng-show="countSelected()" id="confirm">
-		    	<div class="item item-divider">
-			    	<h3 class="bold color1"> {{'transfer_selected' | translate}} </h3>
+		    	<div class="sectionTitle item item-divider"  ng-style="sectionTitle">
+			    	<h3 class="bold color1" ng-style="sectionTitleText"> {{'transfer_selected' | translate}} </h3>
 			  	</div>
+
+			  	<div class="secondaryContainer" ng-style="secondaryContainer">
+			  	<div class="instContainer">
 		    	<div ng-repeat="section in sections">
 		    		<div ng-repeat="beneficiary in section.data" ng-show="beneficiary.model">
 				    	<div class="item item-icon-left">
 				    		<div class="row">
-					    		<h3 class="col grow"> 
+					    		<h3 class="col grow" ng-style="account"> 
 					    			{{::beneficiary.instrument.displayName}} 
 					    		</h3>
-					    		<h3 class="col"> 
+					    		<h3 class="col" ng-style="account"> 
 					    			{{::beneficiary.instrument.maskedAccountNumber | limitTo: -7}} 
 					    		</h3>
 				    		</div>
-				    		<i class="icon {{selectedIcon}}"></i>
+				    		<i class="icon {{selectedIcon}}" ng-style="defaultColor"></i>
 				    	</div>
 				    	<hr/>
 				    </div>
 			    </div>
+			    </div>
+			    </div>
 		    </div>
 		    <div class="text-center padding-top">
-			    <button class="app-input button" ng-disabled="!validate()"ng-click="goTo()">
-			        <p>{{'next' | translate}} </p>
+			    <button class="app-input button" ng-disabled="!validate()" ng-click="goTo()" ng-style="button">
+			        <p ng-style="buttonText">{{'next' | translate}} </p>
 			    </button>
 			</div>
 		</div>
 		<div ng-if="sections.length==0">
             <h4 class="padding text-center">{{'transfer_no_destination_instruments' | translate}} </h4>
             <div class="padding text-center">
-                <button class="app-input button" ng-click="goBack()">
-                    <p>{{'go_back' | translate}} </p>
+                <button class="app-input button" ng-click="goBack()" ng-style="button">
+                    <p ng-style="buttonText">{{'go_back' | translate}} </p>
                 </button>
             </div>
         </div>

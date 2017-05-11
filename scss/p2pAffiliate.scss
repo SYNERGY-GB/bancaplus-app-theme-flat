@@ -4,11 +4,19 @@
 	.radio-content .row, .radio-content .col{
 		padding: 0;
 	}
+	.secondaryContainer {
+
+		.item{
+			margin-top:10px;
+			margin-bottom:10px;
+		}
+	}
 
 	.app-input.item-input, input[disabled] {
 		background-color: white; 
 		height: $input-height;
 		border-radius: 0;  
 	}
+
 
 }

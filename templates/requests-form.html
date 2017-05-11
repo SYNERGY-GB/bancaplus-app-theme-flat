@@ -1,5 +1,5 @@
 <ion-view mz-screen hide-back-button="true">
-	<ion-nav-title>{{title}}</ion-nav-title>
+	<ion-nav-title ng-style="appHeaderText">{{title}}</ion-nav-title>
  	<ion-nav-buttons side="left">
       <button class="button button-icon button-clear ion-chevron-left" ng-click="goBack()">
       </button>
@@ -40,8 +40,8 @@
 			</div>
 		</div>
 		<div class="text-center padding" ng-show="currentSchema.data">
-			<button type="submit" class="app-input button" ng-click="onSubmit()">
-				<p>{{'next' | translate}} </p>
+			<button type="submit" class="app-input button" ng-click="onSubmit()" ng-style="button">
+				<p ng-style="buttonText">{{'next' | translate}} </p>
 			</button>
 		</div>
 	</ion-content>

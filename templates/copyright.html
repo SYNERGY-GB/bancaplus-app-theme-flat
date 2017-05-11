@@ -1,19 +1,21 @@
 <ion-modal-view>
 	<div class="mainContainer">
-		<h3 class="sectionTitle bold">{{'about' | translate}}</h3>
-		<div class="secondaryContainer">
+		<div class="sectionTitle bold" ng-style="sectionTitle">
+		<h3 class="bold" ng-style="sectionTitleText">{{'about' | translate}}</h3>
+		</div>
+		<div class="secondaryContainer" ng-style="secondaryContainer">
 			<div class="text-center padding" id="copyright"> 
-				<p>{{'version' | translate}}: {{appVersion}}</p>
-				<p>{{ params.bankName }}</p>
-				<p>{{'Rif' | translate}}: {{params.bankRif}} &copy {{year}}</p>
-				<p>{{'all_rights_reserved' | translate}}</p>
-				<p class="app-name">{{'app_name' | translate}} &copy {{year}}</p>
+				<p ng-style="commonText">{{'version' | translate}}: {{appVersion}}</p>
+				<p ng-style="commonText">{{ params.bankName }}</p>
+				<p ng-style="commonText">{{'Rif' | translate}}: {{params.bankRif}} &copy {{year}}</p>
+				<p ng-style="commonText">{{'all_rights_reserved' | translate}}</p>
+				<p class="app-name" ng-style="commonText">{{'app_name' | translate}} &copy {{year}}</p>
 				<img ng-src="{{_screenParams.companyResource}}" width="120"/>
 			</div>
 			<div class="row">
 				<div class="col">
-					<button class="button button-block" id="copyrightButton" data-ng-click="modal.hide()"> 
-			        	{{'accept' | translate}}
+					<button class="button button-block" id="copyrightButton" data-ng-click="modal.hide()" ng-style="button"> 
+			        	<p ng-style="buttonText">{{'accept' | translate}}</p>
 			    </button>
 		    </div>
 	    </div>

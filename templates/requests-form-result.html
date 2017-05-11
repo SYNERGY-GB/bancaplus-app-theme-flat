@@ -10,36 +10,37 @@
 		    				<h3>{{'result_of' | translate }} {{title}}</h3>
 		    		</div>
     				<div class="secondaryContainer">
-                <div ng-repeat="info in data.sections">
-                    <div ng-switch="info.propertyType"
-                    	 class="item">  
-						<h4 ng-switch-when="html" 
-							class="link text-center" 
-							ng-click="showTerms(info.htmlValue)">
-								{{::info.displayName}}
-						</h4>
-						<h3 class="color1 bold" ng-switch-when="balance">
-								{{::info.balanceValue[0].displayName}}: {{::info.balanceValue[0].displayAmount}}
-						</h3>
-						<div ng-class="{'reference': info.displayName=='Referencia'}" ng-switch-when="string">
-							<h3 class="color1 bold">
-								{{::info.displayName}}
-							</h3>
-							<p ng-if="info.displayName!='Referencia'">
-									{{::info.stringValue}}
-							</p>
-							<div class="row no-padding" ng-if="info.displayName=='Referencia'">
-								<i class="col col-10 col-center no-padding 
-										  icon {{selectedIcon}} successful">
-     		        			</i>
-								<p class="col no-padding">
-									{{::info.stringValue}}
-								</p>
+		    				
+		                <div ng-repeat="info in data.sections">
+		                    <div ng-switch="info.propertyType"
+		                    	 class="item">  
+								<h4 ng-switch-when="html" 
+									class="link text-center" 
+									ng-click="showTerms(info.htmlValue)">
+										{{::info.displayName}}
+								</h4>
+								<h3 class="color1 bold" ng-switch-when="balance">
+										{{::info.balanceValue[0].displayName}}: {{::info.balanceValue[0].displayAmount}}
+								</h3>
+								<div ng-class="{'reference': info.displayName=='Referencia'}" ng-switch-when="string">
+									<h3 class="color1 bold">
+										{{::info.displayName}}
+									</h3>
+									<p ng-if="info.displayName!='Referencia'">
+											{{::info.stringValue}}
+									</p>
+									<div class="row no-padding" ng-if="info.displayName=='Referencia'">
+										<i class="col col-10 col-center no-padding 
+												  icon {{selectedIcon}} successful">
+		     		        			</i>
+										<p class="col no-padding">
+											{{::info.stringValue}}
+										</p>
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
-					<hr ng-if="$index<data.sections.length-1"/>
-                </div>
+							<hr ng-if="$index<data.sections.length-1"/>
+		                </div>
     				</div>
     		</div>
 	    	<div class="text-center padding">

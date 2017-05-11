@@ -59,7 +59,8 @@ h3.sectionTitle {
 	font-size:$section-title-font-size; 
 	color: $section-title-font-color;
 	font-weight: bold;
-	text-transform: uppercase;
+	z-index:100;
+	//text-transform: uppercase;
 	text-align:center;
 	padding: 10px;
 	margin-left: 10%;
@@ -77,7 +78,7 @@ h3.sectionTitle {
 		margin-bottom:0; 
 		font-size:$section-title-font-size; 
 		color: $section-title-font-color;
-		text-transform: uppercase;
+		//text-transform: uppercase;
 		font-weight:bold;
 	}
 }
@@ -275,6 +276,7 @@ ion-side-menu {
 
 .instContainer{
 	margin-top:20px; 
+	margin-bottom:20px;
 }
 
 .list#confirm {
@@ -290,6 +292,7 @@ ion-side-menu {
 }
 
 .item  {
+	
 	background:$app-default-item-background; 
 	p,h1,h2,h3,h4,h5,h6 {
 		font-family: $app-default-font-family;
@@ -340,8 +343,10 @@ ion-side-menu {
 .app-input  {
 	margin-right: 8px;
     margin-left: 8px;
+    margin-top:10px;
+    margin-bottom:10px;
  	border: 0; 
-	background-color:$app-default-button-color; 
+	//background-color:$app-default-button-color; 
 	border-radius: $button-round-corner; 
 	p {
 		margin:0; 

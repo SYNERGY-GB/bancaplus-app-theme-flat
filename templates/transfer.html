@@ -1,35 +1,43 @@
-<ion-view mz-screen cache-view="false">
-    <ion-nav-title>{{params.title | translate }}</ion-nav-title>
+<ion-view mz-screen cache-view="false" ng-style="emptyB==false && defaultBackground">
+    <ion-nav-title  ng-style="appHeaderText">{{params.title | translate }}</ion-nav-title>
     <ion-content>
-        <img ng-src="{{params.progressResource}}" class="full-image padding" />
-		<div id="search-bar">
+        <!-- SERVER RESOURCES -->
+
+        <img ng-if='srcOk(customization.resources.transfers.transfer_progress_1)' class="full-image" ng-src="{{customization.resources.transfers.transfer_progress_1}}" on-error-src="{{params.progressResource}}" class="full-image padding" />
+
+         <img ng-if='!srcOk(customization.resources.transfers.transfer_progress_1)' class="full-image" ng-src="{{params.progressResource}}" class="full-image padding" />
+
+        <div id="search-bar">
             <div class="item-input-inset  item-icon-right">
                 <label class="item-input-wrapper" id="search-input">
-                   	<input type="text"  placeholder="{{'search' | translate}}" ng-model="search" />
-                   	<i class="icon ion-search placeholder-icon"></i>
+                    <input type="text"  placeholder="{{'search' | translate}}" ng-model="search" />
+                    <i class="icon {{search_icon}}" ng-if='srcOk(customization.style.icons.search)' ng-style="defaultColor"></i>
+                    <i class="icon ion-search placeholder-icon" ng-if='!srcOk(customization.style.icons.search)' ng-style="defaultColor"></i>  
                 </label>
             </div>
         </div>
         <div class="mainContainer" ng-if="data.length>0">
-            <div class="sectionTitle">
-            	<h3> {{'transfer_account_origin' | translate}} </h3>
+            <div class="sectionTitle" ng-style="sectionTitle">
+                <h3 ng-style="sectionTitleText"> {{'transfer_account_origin' | translate}} </h3>
             </div>
-            <div id="accounts" class="secondaryContainer animated fadeIn">
+            <div id="accounts" class="secondaryContainer animated fadeIn" ng-style="secondaryContainer">
                 <div class="instContainer">
                 <div ng-repeat="instrument in data | filter:search:strict">
-                	<div class="row instrument padding-left padding-right" ng-click="goTo(instrument)">
+                    <div class="row instrument padding-left padding-right" ng-click="goTo(instrument)">
                         <div class="col col-10 col-center text-center">
-                            <img ng-src="{{params.checkingIcon}}" />
+                        <img ng-if='srcOk(customization.resources.summary.checking_icon)' ng-src="{{customization.resources.summary.checking_icon}}" on-error-src="{{params.checkingIcon}}"/>
+
+                         <img ng-if='!srcOk(customization.resources.summary.checking_icon)' ng-src="{{params.checkingIcon}}" />
                         </div>
-            			<p class="col col-center account"> 
+                        <p class="col col-center account" ng-style="account"> 
                             {{::instrument.name | limitTo: 14}} {{::instrument.maskedAccountNumber | limitTo: -7}}
-                        </p>	
-            			<p class="col col-50 col-center text-right amount" 
+                        </p>    
+                        <p class="col col-50 col-center text-right amount" 
                            ng-repeat="available in instrument.available" 
-                           ng-if="available.currency == defaultCurrency"> 
+                           ng-if="available.currency == defaultCurrency" ng-style="accountAmount"> 
                             {{::available.displayAmount}} 
                         </p>
-                	</div> 
+                    </div> 
                     <hr ng-if="$index<data.length-1"/>
                 </div>
              </div>
@@ -38,8 +46,8 @@
         <div ng-if="data.length==0">
             <h4 class="padding text-center">{{'transfer_no_source_instruments' | translate}} </h4>
             <div class="padding text-center">
-                <button class="app-input button" ng-click="goBack()">
-                    <p>{{'go_back' | translate}} </p>
+                <button class="app-input button" ng-click="goBack()" ng-style="button">
+                    <p ng-style="button">{{'go_back' | translate}} </p>
                 </button>
             </div>
         </div>

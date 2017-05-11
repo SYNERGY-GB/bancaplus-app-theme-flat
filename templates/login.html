@@ -1,5 +1,5 @@
-<ion-view cache-view="false" mz-screen ng-class="{'startBackground' : entered}">
-	<ion-nav-title>{{params.title | translate }}</ion-nav-title>
+<ion-view cache-view="false" mz-screen ng-class="{'startBackground' : entered}" ng-style="emptyLB==false && loginBackground">
+	<ion-nav-title ng-style="appHeaderText">{{params.title | translate }}</ion-nav-title>
     <ion-nav-buttons side="left">
        	<button class="button button-icon button-clear ion-chevron-left" ng-click="goBack()">
       	</button>
@@ -7,9 +7,16 @@
     <ion-content>
 	    <!--Welcome image-->
 	   
-	    <img ng-src="{{_screenParams.welcomeResource}}" class="full-image veryLongAnimated fadeIn welcome-image">
-	    <div class="input-box veryLongAnimated fadeIn" >
-	    	<h3 class="sectionTitle text-center">{{'login_signin' | translate}}</h3>
+	    <!-- SERVER RESOURCES-->
+	    <img ng-if='srcOk(customization.resources.login.bank_logo)' on-error-src="{{_screenParams.welcomeResource}}" class="full-image veryLongAnimated fadeIn welcome-image" ng-src="{{customization.resources.login.bank_logo}}">
+        <img ng-if='!srcOk(customization.resources.login.bank_logo)' class="full-image veryLongAnimated fadeIn welcome-image" ng-src="{{_screenParams.welcomeResource}}">
+
+	    <div class="input-box shortAnimated fadeIn" ng-style="secondaryContainer">
+
+	    	<div class="sectionTitle text-center" ng-style="sectionTitle">
+				<!--img class="col-10 col-center" ng-src="{{params.sectionIcon}}"/-->
+				<h3 class="col col-center" ng-style="sectionTitleText" >{{'login_signin' | translate}}</h3>
+			</div>
 	    	<div class="button-bar" ng-if="params.dualLogin">
 	    		<button class="button" ng-click="toggleInput(true)" ng-class="{'selectedLogin': showThirdInput}">
 	    			<p> {{'login_first_option' | translate}} </p>
@@ -18,7 +25,7 @@
 	    			<p> {{'login_second_option' | translate}} </p> 
 	    		</button>
 	    	</div>
-        	<form novalidate name="userForm" autocomplete="off">
+        	<form novalidate name="userForm" autocomplete="off" >
 		        <!-- Username -->
 		        <div class="item-input app-input"> 
 	                <input type="{{params.defaultUsernameType}}" 
@@ -58,12 +65,12 @@
 		        </div>
 		        <div class="row" id="loginButtons">
 			        <button type="button" ng-disabled="!login.username && !login.password" 
-			        		class="app-input col text-center button reset-button" ng-click="clearFields()">
-		               	<p>{{'login_clean' | translate}} </p>
+			        		class="app-input col text-center button reset-button" ng-click="clearFields()" ng-style="button">
+		               	<p ng-style="buttonText">{{'login_clean' | translate}} </p>
 		        	</button>
 		        	<button type="submit" class="app-input col text-center button" 
-		        			ng-disabled="userForm.$invalid" ng-click="goTo()">
-		               <p> {{'login_submit' | translate}} </p> 
+		        			ng-disabled="userForm.$invalid" ng-click="goTo()" ng-style="button">
+		               <p ng-style="buttonText"> {{'login_submit' | translate}} </p> 
 			        </button>
 	    		</div> 
 		    </form>
@@ -74,7 +81,15 @@
 	</ion-footer-bar-->
 	<div class = "footer">
   	<div class="veryLongAnimated fadeIn fix-content-bottom text-center hide-on-keyboard-open">
-		<img ng-src="{{_screenParams.companyResource}}"/>
+		<!-- server resource-->
+		<img ng-if='customization.resources.login.synergy_footer !== "" && customization !== null' on-error-src="{{_screenParams.companyResource}}" ng-src="{{customization.resources.login.synergy_footer}}">
+        <img ng-if='customization.resources.login.synergy_footer == "" || customization == null' ng-src="{{_screenParams.companyResource}}">
 	</div>
 	</div>
+
+	<style>
+        .bar.bar-header {
+            background-color: {{$root.appHeaderColor['background-color']}} !important;
+        }
+    </style>
 </ion-view>

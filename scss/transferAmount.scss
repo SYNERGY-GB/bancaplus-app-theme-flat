@@ -16,6 +16,21 @@
 		border-bottom: none;
 	}
 
+	.secondaryContainer {
+
+		.item{
+			margin-top:10px;
+			margin-bottom:10px;
+		}
+		.subtitle{
+			margin-top:20px;
+			&:last-child {
+				margin-bottom:10px;	
+		}
+		}
+	}
+
+
 	.schemaForm form {
 	 	.item {
 	 		box-shadow: none; 

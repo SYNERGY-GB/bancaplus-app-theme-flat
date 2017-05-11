@@ -1,4 +1,4 @@
-<ion-view mz-screen cache-view="false">
+<ion-view mz-screen cache-view="false" ng-style="emptyDB==false && dashboardBackground">
 
     <button class="button button-icon veryLongAnimated slideInUp langIcon"  ng-click="switchLang()">
         <span ng-class="{'button-opaque' : $parent.lang =='en_us'}" >ES</span>
@@ -7,39 +7,21 @@
     </button>
 
     <div class="logo veryLongAnimated fadeIn">
-        <img class="full-image "ng-src="{{params.welcomeResource}}">
-    </div>
+        <!-- server resource -->
 
+        <img ng-if='srcOk(customization.resources.dashboard.welcomeResource)' on-error-src="{{params.welcomeResource}}" class="full-image" ng-src="{{customization.resources.dashboard.welcomeResource}}">
+        <img ng-if='!srcOk(customization.resources.dashboard.welcomeResource)' class="full-image" ng-src="{{params.welcomeResource}}">
+    </div>
+    
     <div class="dashboard-menu">
         <div class="dashboard-box longAnimated slideInUp" ng-repeat="option in data" ng-click="handleAction(option)">
-            <img class="dashboard-img" ng-src="{{option.resource}}">
-            <h2> {{option.title | translate}} </h2>
-            <p >{{option.desc | translate}} </p>
-        </div>
-    </div>
-    <!-- 
-    <div class="fix-content-bottom longAnimated fadeIn" ng-if="params.menuSelection=='leftMenu'">
-        <ion-list>
-            <div ng-repeat="option in data">
-                <ion-item class="item-avatar item-text-wrap" ng-click="handleAction(option)">
-                    <img class="dashboard-img" ng-src="{{option.resource}}">
-                	<h2 class="bold"> {{option.title | translate}} </h2>
-                    <p >{{option.desc | translate}}</p>
-                </ion-item>
-                <hr ng-if="$index<data.length-1"/>
-            </div>
-        </ion-list>
-    </div>
 
-    <div class="fix-content-bottom shortAnimated fadeIn" id="footerMenu" ng-if="params.menuSelection=='footerMenu'">
-        <div class="row row-buttons">
-            <button ng-repeat="option in data" class="button button-clear text-center col" ng-click="handleAction(option)">
-                <img class="full-image" ng-src="{{option.resource}}">
-            </button>
-        </div>
-        <div class="row row-subs">
-            <h4 ng-repeat="option in data" class="text-center col bold"> {{option.title | translate}} </h4>
+            <img class="dashboard-img" ng-if='srcOk(option.server_resource)' on-error-src="{{option.resource}}" ng-src="{{option.server_resource}}"/>
+
+            <img class="dashboard-img" ng-if='!srcOk(option.server_resource)' ng-src="{{option.resource}}"/>
+
+            <h2 class="bold" ng-style= "optionTitle"> {{option.title | translate}} </h2>
+            <p ng-style= "optionSubtitle">{{option.desc | translate}}</p>
         </div>
     </div>
-    -->
 </ion-view>
