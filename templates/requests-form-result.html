@@ -1,4 +1,4 @@
-<ion-view cache-view="false" mz-screen hide-back-button="true">
+<ion-view cache-view="false" mz-screen hide-back-button="true" ng-style="emptyB==false && defaultBackground">
 		<ion-nav-title>{{title}}</ion-nav-title>
  		<ion-nav-buttons side="left">
       	<button class="button button-icon button-clear ion-chevron-left" ng-click="goBack()">
@@ -6,8 +6,8 @@
   	</ion-nav-buttons>
     <ion-content>
         <div class="mainContainer">
-		    		<div class="sectionTitle">
-		    				<h3>{{'result_of' | translate }} {{title}}</h3>
+		    		<div class="sectionTitle" ng-style="sectionTitle">
+		    				<h3 ng-style="sectionTitleText">{{'result_of' | translate }} {{title}}</h3>
 		    		</div>
     				<div class="secondaryContainer">
 		    				
@@ -44,8 +44,8 @@
     				</div>
     		</div>
 	    	<div class="text-center padding">
-				    <button type="button" class="app-input button" ng-click="goBack()">
-				        <p>{{'go_back' | translate}} </p>
+				    <button type="button" class="app-input button" ng-click="goBack()" ng-style="button">
+				        <p ng-style="buttonText">{{'go_back' | translate}} </p>
 				    </button>
 				</div>
     </ion-content>

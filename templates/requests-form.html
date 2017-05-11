@@ -10,7 +10,7 @@
 		    	<div ng-switch="info.propertyType"  
 		    	     ng-class="{'item item-icon-left' : info.propertyType=='balance' || info.propertyType=='string'}">
 			    		<i class="icon {{platformIcon}}" 
-			    			 ng-if="info.propertyType=='balance' || info.propertyType=='string'"></i>
+			    			 ng-if="info.propertyType=='balance' || info.propertyType=='string'" ng-style="defaultColor"></i>
 			    		<h4 ng-switch-when="html" 
 			    				ng-if="info.id=='terms'"
 			    				class="link text-center" 

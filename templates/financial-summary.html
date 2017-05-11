@@ -66,6 +66,7 @@
 								{{::amount.displayAmount}}
 								{{::instrument.customDisplayValue}}
 							</p> 
+
 							<p class="text-right" ng-if="instrument.category=='creditCards'" id="status" ng-style="commonText"> 
 								({{'available' | translate}})
 							</p>
@@ -94,7 +95,7 @@
 										{{::instrument.customDisplayValue.balanceValue[0].displayName}}
 									</p>
 								</div>
-							</div> 
+							</div>
 						</div>
 
 						<!-- fourth column: details arrow icon -->
