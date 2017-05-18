@@ -1,9 +1,8 @@
-.appMenu .p2pTransfer, .appMenu .p2pCollection {
+.appMenu .p2pTransfer, .appMenu .p2pCollection .appMenu .p2pCollectionDetail {
 
 	h4 {
 		color: $secondary-blue;
 		font-weight: bold;
-		font-style: italic;
 		font-size: 16px;
 	}
 
@@ -21,7 +20,10 @@
 	}
 
 	.secondaryContainer {
-		padding-top: 10px;
+		padding-top: 20px;
+		.instrument{
+			margin-top:20px;
+		}
 	}
 
 	.radio-content {

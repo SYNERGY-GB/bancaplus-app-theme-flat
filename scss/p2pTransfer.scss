@@ -16,8 +16,10 @@
 	}
 
 	.sectionTitle {
+		margin-top:10px;
 		&.item { 
 			border:0; 
+			margin-top:10px;
 			background-color: $section-title-background-color;
 		}
 	}

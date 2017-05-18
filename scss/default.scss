@@ -209,6 +209,8 @@ ion-side-menu {
 		padding-bottom:0; 
 	}
 	&.instrument {
+		margin-top:10px;
+		margin-bottom:10px;
 		border
 		+ hr {
 			margin: 0 7px; 
@@ -361,6 +363,7 @@ ion-side-menu {
 
 button.app-input {
 	min-width: 40vw;
+	background-color:$app-default-button-color;
 }
 
 .fix-content-bottom {
@@ -518,11 +521,14 @@ input:-ms-input-placeholder { /* IE10+ */
 	border-top-left-radius: $container-round-corner; 
 	background-color: transparent;
 
-	div#copyright p {
-		margin-bottom:2px; 
-		color: black; 
-		&.app-name {
-			color: $main-color;
+	div#copyright{
+		padding-top:30px;
+		p {
+			margin-bottom:2px; 
+			color: black; 
+			&.app-name {
+				color: $main-color;
+			}
 		}
 	}
 
@@ -535,12 +541,13 @@ input:-ms-input-placeholder { /* IE10+ */
 	}
 
 	.secondaryContainer #copyright { 
-		padding-bottom: 0;
+		padding-bottom: 10px;
 	}
 
 	button#copyrightButton {
 		border-radius: 0;
 		background-color: $header-background-color;
+		margin-left:0;
 		color: white;
 		&.activated {
 			border: none; 
@@ -760,7 +767,7 @@ label i.icon.ion-search {
 //Schema Form CSS
 
 .schemaForm {
-
+	
 	&.secondaryContainer {
 		padding-top:5px;
 	}
@@ -775,15 +782,18 @@ label i.icon.ion-search {
 		fieldset {
 			margin:0; 
 			padding:0; 
+
 		}
 
 		span.sr-only, .help-block, span.form-control-feedback, span.form-control-feedback + span {
-			display:none 
+			display:none;
+			
 		}
 
 		select {
 			color: $text-color; 
-			-webkit-appearance: none; 
+			-webkit-appearance: none;
+
 		}
 
 		label.input-select, select, .item.item-select {
@@ -795,7 +805,8 @@ label i.icon.ion-search {
 		}
 
 		.sectionTitle.control-label {
-			margin-top: 10px; 
+			margin-top: 10px;
+			margin-bottom:0px; 
 		}
 
 		.list {
@@ -809,7 +820,7 @@ label i.icon.ion-search {
 			&.item-radio .radio-content {
 				.item-content {
 					padding: 12px 45px 12px 10px;
-					margin-left:10%;
+				
 				}
 				.radio-icon {
     				padding: 6px 14px;

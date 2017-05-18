@@ -4,7 +4,7 @@
 		<h3 class="bold" ng-style="sectionTitleText">{{'about' | translate}}</h3>
 		</div>
 		<div class="secondaryContainer" ng-style="secondaryContainer">
-			<div class="text-center padding" id="copyright"> 
+			<div class="text-center" id="copyright"> 
 				<p ng-style="commonText">{{'version' | translate}}: {{appVersion}}</p>
 				<p ng-style="commonText">{{ params.bankName }}</p>
 				<p ng-style="commonText">{{'Rif' | translate}}: {{params.bankRif}} &copy {{year}}</p>
@@ -14,12 +14,13 @@
 			</div>
 			<div class="row">
 				<div class="col">
-					<button class="button button-block" id="copyrightButton" data-ng-click="modal.hide()" ng-style="button"> 
-
+					<button class="app-input col text-center button" id="copyrightButton" data-ng-click="modal.hide()" ng-style="button"> 
 			        	<p ng-style="buttonText">{{'accept' | translate}}</p>
 			    </button>
-		    </div>
-	    </div>
+		   	 	</div>
+	   		</div>
 		</div>
 	</div>
 </ion-modal-view> 
+
+<!--End of copyright.html -->

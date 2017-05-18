@@ -77,7 +77,8 @@
 
 	
 	.app-input.item-input {
-
+		margin-top:0px;
+    	margin-bottom:0px;
 		background-color: white; 
 		border-radius: 0;  
 		border: 1px solid $input-border-color; 
@@ -90,7 +91,7 @@
 			overflow: initial; 
 			padding: 0 8px; 
 			border-radius: 0px !important;
-			background-color: white;
+			background-color: $app-default-button-color;
 			border: 1px solid $app-default-button-color;
 			p {
 				margin-bottom:0;
@@ -100,7 +101,7 @@
 				border: 1px solid $header-color;
 				border-right:0;
 				p {
-					color: $header-color; 
+					color: $app-default-button-color; 
 				}
 			}
 			&:first-child.selectedLogin {

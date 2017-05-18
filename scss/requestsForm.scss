@@ -10,8 +10,9 @@
 		padding-right: 0;
 	}
 
-	sectionTitle{
+	.sectionTitle{
 		text-align:center;
+		margin-bottom:15px;
 	}
 	.no-padding-but-right {
 		padding-top: 0;
@@ -34,7 +35,7 @@
 	}
 	
 	#info {
-		background-color: #F2F2F2;
+		background-color: transparent;
 
 		.item-icon-left {
 			background: none;

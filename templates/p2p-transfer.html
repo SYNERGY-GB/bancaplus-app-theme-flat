@@ -1,0 +1,225 @@
+<ion-view mz-screen cache-view="false" ng-style="emptyB==false && defaultBackground">
+    <ion-nav-title ng-style="appHeaderText">{{params.title | translate }}</ion-nav-title>
+
+    <!-- Subheader with source instrument info -->
+    <ion-header-bar align-title="center" class="bar bar-subheader" id="remaining" style="background-color: transparent !important;">
+        <div class="text-center col col-120" ng-repeat="available in sourceInstrument.available" 
+             ng-if="available.currency == sourceInstrument.currency">
+            <p class="color3 truncate" ng-style="defaultColor"> 
+                {{::sourceInstrument.name}} {{::sourceInstrument.maskedAccountNumber | limitTo: -7}} 
+            </p>
+            <p class="color3" ng-style="defaultColor"> {{::available.displayAmount}} </p>
+        </div>
+    </ion-header-bar>
+
+    <ion-content>
+
+        <!-- Source select -->
+        <div class="mainContainer" ng-if="sourceInstrument">
+            <div class="sectionTitle" ng-style="sectionTitle">
+                <h3 ng-style="sectionTitleText"> {{'payment_type' | translate}} </h3>
+            </div>
+            <div class="secondaryContainer no-padding-top" ng-style="secondaryContainer">
+                <div class="instContainer">
+                <div class="item item-select select">
+                    <select ng-model="sendData.payType">
+                        <option value="{{'from_mobile' | translate}}" selected >
+                            {{'from_mobile' | translate}}
+                        </option>
+                        <option value="{{'cash' | translate}}">
+                            {{'cash' | translate}}
+                        </option>
+                    </select>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <form novalidate name="beneficiaryForm" autocomplete="off" 
+              ng-if="sourceInstrument">
+
+            <!-- Bank select -->
+            <div class="mainContainer" ng-if="sourceInstrument">
+                <div class="sectionTitle" ng-style="sectionTitle">
+                    <h3 ng-style="sectionTitleText"> {{'receiving_bank' | translate}} </h3>
+                </div>
+                <div class="secondaryContainer">
+                    <div class="instContainer">
+                    <div class="item item-select select row">
+                        <select ng-model="sendData.bankSelect" required>
+                            <option class="placeholder" value="" disabled selected>
+                                {{'select_bank' | translate}}
+                            </option>
+                            <option ng-repeat="bank in params.banks" value="{{bank}}">
+                                {{::bank}}
+                            </option>
+                        </select>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input select -->
+            <div class="row">
+                <div class="col col-50 no-padding-left">
+                    <ion-checkbox class="special-checkbox no-padding-left-inner no-padding-right" 
+                                  ng-model="sendData.phoneToggle"
+                                  ng-click="(sendData.emailToggle = !sendData.phoneToggle);
+                                            (sendData.beneficiary = '')">
+                        {{'phone' | translate}}         
+                    </ion-checkbox>
+                </div>
+                <div class="col col-50 no-padding-right">
+                    <ion-checkbox class="special-checkbox no-padding-right" 
+                                  ng-model="sendData.emailToggle"
+                                  ng-click="(sendData.phoneToggle = !sendData.emailToggle);
+                                            (sendData.beneficiary = '')">
+                        {{'p2p_transfer_email_placeholder' | translate}}           
+                    </ion-checkbox>
+                </div>
+            </div>
+            <!-- Beneficiary -->
+            <div ng-if="sendData.phoneToggle" class="row margin-bottom code">
+                <select class="item-input app-input col col-20 no-margin-right"
+                        data-ng-model="sendData.beneficiaryCode"
+                        ng-options="code for code in params.codes"
+                        required>
+                    <option class="placeholder" value="">
+                        0000
+                    </option>
+                </select>
+                <div class="item-input app-input col"> 
+                    <input  type="tel" 
+                            data-ng-model="sendData.beneficiary" 
+                            name="beneficiary_phone" 
+                            required
+                            placeholder="{{'p2p_transfer_number_placeholder' | translate}}"
+                            autocomplete="off"
+                            autocapitalize="none" />
+                </div>
+                <img class="col col-10 col-center" ng-src="{{params.addressBook}}"
+                     ng-click="goToAddressBook()" />
+            </div>
+            <div ng-if="sendData.emailToggle" class="row margin-bottom">
+                <div class="item-input app-input col"> 
+                    <input  type="email" 
+                            data-ng-model="sendData.beneficiary" 
+                            name="beneficiary_email" 
+                            required
+                            placeholder="{{'p2p_transfer_email_placeholder' | translate}}"
+                            autocomplete="off"
+                            autocapitalize="none" />
+                </div>
+                <img class="col col-10 col-center" ng-src="{{params.addressBook}}" 
+                     ng-click="goToAddressBook()" />
+            </div>
+
+            <!-- ID -->
+            <div class="row margin-bottom">
+                <div class="item-input app-input col"> 
+                    <input  type="tel" 
+                            data-ng-model="sendData.id" 
+                            name="beneficiary_id" 
+                            required
+                            placeholder="{{'p2p_transfer_id_placeholder' | translate}}"
+                            autocomplete="off"
+                            autocapitalize="none" />
+                </div>
+            </div>
+
+            <!-- Amount -->
+            <div class="row margin-bottom">
+                <div class="item-input app-input col"> 
+                    <input  type="number" 
+                            data-ng-model="sendData.amount" 
+                            name="beneficiary_amount" 
+                            required
+                            placeholder="{{'p2p_transfer_amount_placeholder' | translate}}"
+                            autocomplete="off"
+                            autocapitalize="none" />
+                </div>
+            </div>
+
+            <!-- Concept -->
+            <div class="row margin-bottom">
+                <div class="item-input app-input col"> 
+                    <input  type="text" 
+                            data-ng-model="sendData.concept" 
+                            name="beneficiary_concept" 
+                            required
+                            placeholder="{{'p2p_transfer_concept_placeholder' | translate}}"
+                            autocomplete="off"
+                            autocapitalize="none" />
+                </div>
+            </div>
+
+            <!-- Frequent contact -->
+            <div class="row"
+                 ng-class="{'no-padding-bottom': sendData.frequentContact}">
+                <div class="col no-padding-left">
+                    <ion-checkbox class="special-checkbox no-padding-left-inner 
+                                         no-padding-right"
+                                  ng-model="sendData.frequentContact">
+                        {{'frequent_contact' | translate}}            
+                    </ion-checkbox>
+                </div>
+            </div>
+
+            <div ng-if="sendData.frequentContact">
+                <div class="row no-padding-top">
+                    <div class="col col-10"></div>
+                    <div class="item-input app-input col"> 
+                        <input  type="text" 
+                                data-ng-model="sendData.alias" 
+                                name="beneficiary_concept" 
+                                required
+                                placeholder="{{'p2p_transfer_alias_placeholder' | translate}}"
+                                autocomplete="off"
+                                autocapitalize="none" />
+                    </div>
+                </div>
+
+                <!-- Transaction limit -->
+                <div class="row no-padding-bottom">
+                    <div class="col no-padding-left">
+                        <ion-checkbox class="special-checkbox no-padding-left-inner 
+                                             no-padding-right" ng-model="sendData.transactionLimit">
+                            {{'transaction_limit' | translate}}            
+                        </ion-checkbox>
+                    </div>
+                </div>
+
+                <div ng-if="sendData.transactionLimit" 
+                     class="row margin-bottom no-padding-top no-margin-top">
+                    <div class="col col-10"></div>
+                    <div class="item-input app-input col"> 
+                        <input  type="number" 
+                                data-ng-model="sendData.transactionLimitAmount" 
+                                name="beneficiary_concept" 
+                                required
+                                placeholder="{{'p2p_transfer_amount_limit_placeholder' | translate}}"
+                                autocomplete="off"
+                                autocapitalize="none" />
+                    </div>
+                </div>
+            </div>
+                   
+            <div class="text-center padding-top">
+                <button class="app-input button" ng-disabled="beneficiaryForm.$invalid" ng-click="goTo()" ng-style="button">
+                    <p ng-style="buttonText">{{'next' | translate}} </p>
+                </button>
+            </div>
+        </form>
+        
+        <div ng-if="!sourceInstrument">
+            <h4 class="padding text-center">{{'p2p_no_source_instruments' | translate}} </h4>
+            <div class="padding text-center">
+                <button class="app-input button" ng-click="goBack()" ng-style="button">
+                    <p ng-style="buttonText">{{'go_back' | translate}} </p>
+                </button>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
+
+<!--End of p2p-transfer.html -->
