@@ -16,7 +16,7 @@ The generator will create all files and install the depedencies you need to run 
 
 ## Look
 
-![alt text](http://url/to/img.png)
+![alt text](http://blog.synergy-gb.com/assets/img/temas/tema2_flat.png)
 
 
 There are other themes available to apply to Banca+ Movil:
