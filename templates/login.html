@@ -36,7 +36,7 @@
 	                	   	 placeholder="{{'login_username' | translate}}"
 	                	   	 autocomplete="off"
 	                	   	 autocapitalize="none"
-	                	   	 maxlength="16" /> 
+	                	   	 maxlength="16" ng-style="commonText"/> 
 		        </div>
 		        <!-- Third input (optional) -->
 		        <div class="item-input app-input" ng-if="showThirdInput"> 
@@ -49,7 +49,7 @@
 	                	   	 autocomplete="off"
 	                	   	 autocapitalize="none"
 	                	   	 minlength="6"
-	                	   	 maxlength="9" /> 
+	                	   	 maxlength="9" ng-style="commonText"/> 
 		        </div>
 		        <!-- Password -->
 		        <div class="item-input app-input" id="password" >
@@ -60,7 +60,7 @@
 	                			 ng-pattern="params.passwordValidation" 
 	                			 placeholder="{{'login_password' | translate}}"
 	                			 autocomplete="off"
-	                			 autocapitalize="none" />
+	                			 autocapitalize="none" ng-style="commonText"/>
 	  
 		        </div>
 		        <div class="row" id="loginButtons">
