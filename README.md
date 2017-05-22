@@ -19,12 +19,12 @@ The generator will create all files and install the depedencies you need to run 
 
 
 There are other themes available to apply to Banca+ Móvil:
-* Original
-* Curve
-* Transparent
+* [Original](https://github.com/SYNERGY-GB/bancaplus-app-theme-original)
+* [Curve](https://github.com/SYNERGY-GB/bancaplus-app-theme-curve)
+* [Transparent](https://github.com/SYNERGY-GB/bancaplus-app-theme-transparent)
 
 
 ## License
 
- © [SYNERGY-GB]()
+ © [SYNERGY-GB](https://github.com/SYNERGY-GB)
 
