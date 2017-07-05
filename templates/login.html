@@ -1,9 +1,9 @@
 <ion-view cache-view="false" mz-screen ng-class="{'startBackground' : entered}" ng-style="emptyLB==false && loginBackground">
-	<ion-nav-title ng-style="appHeaderText">{{params.title | translate }}</ion-nav-title>
+	<!--<ion-nav-title ng-style="appHeaderText">{{params.title | translate }}</ion-nav-title>
     <ion-nav-buttons side="left">
        	<button class="button button-icon button-clear ion-chevron-left" ng-click="goBack()">
       	</button>
-    </ion-nav-buttons>
+    </ion-nav-buttons>-->
     <ion-content>
 	    <!--Welcome image-->
 	   
@@ -11,7 +11,7 @@
 	    <img ng-if='srcOk(customization.resources.login.bank_logo)' on-error-src="{{_screenParams.welcomeResource}}" class="full-image veryLongAnimated fadeIn welcome-image" ng-src="{{customization.resources.login.bank_logo}}">
         <img ng-if='!srcOk(customization.resources.login.bank_logo)' class="full-image veryLongAnimated fadeIn welcome-image" ng-src="{{_screenParams.welcomeResource}}">
 
-	    <div class="input-box shortAnimated fadeIn">
+	    <div class="input-box veryLongAnimated fadeIn" ng-style="secondaryContainer">
 
 	    	<div class="sectionTitle text-center" ng-style="sectionTitle">
 				<!--img class="col-10 col-center" ng-src="{{params.sectionIcon}}"/-->
@@ -25,71 +25,90 @@
 	    			<p> {{'login_second_option' | translate}} </p> 
 	    		</button>
 	    	</div>
-        	<form novalidate name="userForm" autocomplete="off" >
-		        <!-- Username -->
-		        <div class="item-input app-input"> 
-	                <input type="{{params.defaultUsernameType}}" 
-	                			 data-ng-model="login.username" 
-	                			 name="username" 
-	                			 required
-	                	   	 ng-pattern="params.usernameValidation" 
-	                	   	 placeholder="{{'login_username' | translate}}"
-	                	   	 autocomplete="off"
-	                	   	 autocapitalize="none"
-	                	   	 maxlength="16" ng-style="commonText"/> 
-		        </div>
-		        <!-- Third input (optional) -->
-		        <div class="item-input app-input" ng-if="showThirdInput"> 
-	                <input type="{{params.defaultPersonalIdType}}" 
-	                			 data-ng-model="login['personalId']" 
-	                			 name="{{params.threeButtonLogin}}" 
-	                			 required
-	                	   	 ng-pattern="params.thirdInputValidation" 
-	                	   	 placeholder="{{'login_third_button' | translate}}"
-	                	   	 autocomplete="off"
-	                	   	 autocapitalize="none"
-	                	   	 minlength="6"
-	                	   	 maxlength="9" ng-style="commonText"/> 
-		        </div>
-		        <!-- Password -->
-		        <div class="item-input app-input" id="password" >
-	                <input type="password" 
-	                			 data-ng-model="login.password" 
-	                			 name="password" 
-	                			 required 
-	                			 ng-pattern="params.passwordValidation" 
-	                			 placeholder="{{'login_password' | translate}}"
-	                			 autocomplete="off"
-	                			 autocapitalize="none" ng-style="commonText"/>
-	  
-		        </div>
-		        <div class="row" id="loginButtons">
-			        <button type="button" ng-disabled="!login.username && !login.password" 
-			        		class="app-input col text-center button reset-button" ng-click="clearFields()" ng-style="button">
-		               	<p ng-style="buttonText">{{'login_clean' | translate}} </p>
-		        	</button>
-		        	<button type="submit" class="app-input col text-center button" 
-		        			ng-disabled="userForm.$invalid" ng-click="goTo()" ng-style="button">
-		               <p ng-style="buttonText"> {{'login_submit' | translate}} </p> 
-			        </button>
-	    		</div> 
-		    </form>
-		</div>
+            <form novalidate name="userForm" autocomplete="off">
+                <!-- Username -->
+                <div class="item-input app-input"> 
+                    <input type="{{params.defaultUsernameType}}" 
+                                 data-ng-model="login.username" 
+                                 name="username" 
+                                 required
+                             ng-pattern="params.usernameValidation" 
+                             placeholder="{{'login_username' | translate}}"
+                             autocomplete="off"
+                             autocapitalize="none"
+                             maxlength="{{params.usernameMaxlength}}" /> 
+                </div>
+                <!-- Third input (optional) -->
+                <div class="item-input app-input" ng-if="showThirdInput"> 
+                    <input type="{{params.defaultPersonalIdType}}" 
+                                 data-ng-model="login['personalId']" 
+                                 name="{{params.threeButtonLogin}}" 
+                                 required
+                             ng-pattern="params.thirdInputValidation" 
+                             placeholder="{{'login_third_button' | translate}}"
+                             autocomplete="off"
+                             autocapitalize="none"
+                             maxlength="{{params.thirdInputMaxlength}}" /> 
+ 
+                </div>
+                <!-- Password -->
+                <div class="item-input app-input" id="password" >
+                    <input type="password" 
+                                 data-ng-model="login.password" 
+                                 name="password" 
+                                 required 
+                                 ng-pattern="params.passwordValidation" 
+                                 placeholder="{{'login_password' | translate}}"
+                                 autocomplete="off"
+                                 autocapitalize="none"
+                                 maxlength="{{params.passwordMaxlength}}" />
+ 
+                </div>
+                <div class="row" id="loginButtons">
+                    <button type="button" ng-disabled="!login.username && !login.password" 
+                            class="app-input col text-center button" ng-click="clearFields()" ng-style="button">
+                        <p ng-style="buttonText">{{'login_clean' | translate}} </p>
+                    </button>
+                    <button type="submit" class="app-input col text-center button" 
+                            ng-disabled="userForm.$invalid" ng-click="goTo()" ng-style="button">
+                        <p ng-style="buttonText"> {{'login_submit' | translate}} </p> 
+                    </button>
+                </div> 
+            </form>
+        </div>
+<!--
+        <div class="switch text-center" ng-if="params.switch">
+            <p ng-if="!params.switch.choice" ng-style="switchText"/>
+                {{params.switch.leftName | translate}}
+            </p>
+            <p ng-if="params.switch.choice" ng-style="switchText"/>
+                {{params.switch.rightName | translate}}
+            </p>
+            <label class="toggle">
+                <input type="checkbox" ng-model="params.switch.choice">
+                <div class="track">
+                    <div class="handle" ng-class="params.switch.choice?'toggleRight':'toggleLeft'"></div>
+                </div>
+            </label>
+        </div>
+-->
   </ion-content>
   <!--ion-footer-bar class="veryLongAnimated fadeIn text-center hide-on-keyboard-open">
 	  <img ng-src="{{_screenParams.companyResource}}"/>
 	</ion-footer-bar-->
-	<div class = "footer">
-  	<div class="veryLongAnimated fadeIn fix-content-bottom text-center hide-on-keyboard-open">
-		<!-- server resource-->
-		<img ng-if='customization.resources.login.synergy_footer !== "" && customization !== null' on-error-src="{{_screenParams.companyResource}}" ng-src="{{customization.resources.login.synergy_footer}}">
-        <img ng-if='customization.resources.login.synergy_footer == "" || customization == null' ng-src="{{_screenParams.companyResource}}">
-	</div>
-	</div>
-
-	<style>
+    <div class="veryLongAnimated fadeIn fix-content-bottom text-center hide-on-keyboard-open">
+ 
+        <img ng-if='srcOk(customization.resources.login.synergy_footer)' on-error-src="{{_screenParams.companyResource}}" ng-src="{{customization.resources.login.synergy_footer}}">
+        <img ng-if='!srcOk(customization.resources.login.synergy_footer)' ng-src="{{_screenParams.companyResource}}">
+ 
+    </div>
+ 
+    <style>
         .bar.bar-header {
             background-color: {{$root.appHeaderColor['background-color']}} !important;
+        }
+        .handle{
+            background-color: {{$root.switchColor['color']}} !important;
         }
     </style>
 </ion-view>

@@ -81,7 +81,8 @@
     	margin-bottom:0px;
 		background-color: white; 
 		border-radius: 0;  
-		border: 1px solid $input-border-color; 
+		//border-bottom: 1px solid $input-border-color; 
+		border:0;
 	}
 
 	.button-bar {
@@ -123,7 +124,7 @@
 	}
 	
 	.sectionTitle{
-		margin-top:-15%;
+		margin-top:-5%;
 	}
 
  	.item-input:first-child {
