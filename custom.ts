@@ -15,6 +15,8 @@ export var customize = (metadata : Megazord.ContainerScreenList) : void => {
     metadata['appMenu.transferSelection']['template'] = 'transfer-selection.html';
     metadata['appMenu.transfer']['template'] = 'transfer.html';
 
+    metadata['appMenu.summary']['params']['arrow'] = 'ion-arrow-right-b'
+
   //customize.json
   
 }
