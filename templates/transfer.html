@@ -3,9 +3,9 @@
     <ion-content>
         <!-- SERVER RESOURCES -->
 
-        <img ng-if='srcOk(customization.resources.transfers.transfer_progress_1)' class="full-image" ng-src="{{customization.resources.transfers.transfer_progress_1}}" on-error-src="{{params.progressResource}}" class="full-image padding" />
+        <img ng-if='srcOk(customization.resources.transfers.transfer_progress_1)' ng-src="{{customization.resources.transfers.transfer_progress_1}}" on-error-src="{{params.progressResource}}" class="full-image padding" />
 
-         <img ng-if='!srcOk(customization.resources.transfers.transfer_progress_1)' class="full-image" ng-src="{{params.progressResource}}" class="full-image padding" />
+         <img ng-if='!srcOk(customization.resources.transfers.transfer_progress_1)' ng-src="{{params.progressResource}}" class="full-image padding" />
 
         <div id="search-bar">
             <div class="item-input-inset  item-icon-right">

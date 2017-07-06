@@ -10,9 +10,9 @@
 
         <!-- SERVER RESOURCES -->
 
-        <img ng-if='srcOk(customization.resources.transfers.transfer_progress_5)' class="full-image" ng-src="{{customization.resources.transfers.transfer_progress_5}}" on-error-src="{{params.progressResource}}" class="full-image padding" />
+        <img ng-if='srcOk(customization.resources.transfers.transfer_progress_5)'  ng-src="{{customization.resources.transfers.transfer_progress_5}}" on-error-src="{{params.progressResource}}" class="full-image padding" />
 
-         <img ng-if='!srcOk(customization.resources.transfers.transfer_progress_5)' class="full-image" ng-src="{{params.progressResource}}" class="full-image padding" />
+         <img ng-if='!srcOk(customization.resources.transfers.transfer_progress_5)'  ng-src="{{params.progressResource}}" class="full-image padding" />
 
         <!-- DEFAULT RESOURCES 
         <img ng-src="{{params.progressResource}}" class="full-image padding" />
